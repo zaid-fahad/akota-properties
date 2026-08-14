@@ -9,7 +9,7 @@ export default function BookingModal({ isOpen, onClose, prefilledUnit = null }) 
     fullName: '',
     phone: '',
     email: '',
-    shareType: prefilledUnit ? `Unit ${prefilledUnit}` : '8 Katha Share (1100 SFT)',
+    shareType: prefilledUnit ? `Unit ${prefilledUnit}` : 'AKOTA NIBASH (Ashulia Savar - 36 Decimals)',
     preferredDate: '',
     message: ''
   });
@@ -70,7 +70,7 @@ export default function BookingModal({ isOpen, onClose, prefilledUnit = null }) 
               </div>
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1">
                 <p className="font-bold text-slate-900">{language === 'en' ? 'For urgent queries call:' : 'জরুরী প্রশ্নের জন্য কল করুন:'}</p>
-                <p className="text-emerald-700 font-black text-sm">{PROJECT_INFO.phonePrimary}</p>
+                <p className="text-emerald-700 font-black text-sm">{PROJECT_INFO.phonePrimary} / 01333878960</p>
               </div>
               <button
                 onClick={handleReset}
@@ -126,7 +126,7 @@ export default function BookingModal({ isOpen, onClose, prefilledUnit = null }) 
                 </div>
               </div>
 
-              {/* Select Share */}
+              {/* Select Share / Project */}
               <div className="space-y-1.5">
                 <label className="text-xs font-black uppercase text-slate-700 tracking-wider flex items-center gap-1.5">
                   <Building size={13} className="text-emerald-600" /> {t('interestedShare')}
@@ -136,9 +136,10 @@ export default function BookingModal({ isOpen, onClose, prefilledUnit = null }) 
                   onChange={(e) => setFormData({ ...formData, shareType: e.target.value })}
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
                 >
-                  <option>{language === 'en' ? '8 Katha Share (1100-1200 SFT)' : '৮ কাঠা প্রজেক্ট শেয়ার (১১০০ - ১২০০ SFT)'}</option>
-                  <option>{language === 'en' ? '10 Katha Share (1400-1500 SFT)' : '১০ কাঠা প্রজেক্ট শেয়ার (১৪০০ - ১৫০০ SFT)'}</option>
-                  <option>{language === 'en' ? '12 Katha Share (1700-1800 SFT)' : '১২ কাঠা প্রজেক্ট শেয়ার (১৭০০ - ১৮০০ SFT)'}</option>
+                  <option value="AKOTA NIBASH">{language === 'en' ? 'AKOTA NIBASH (Ashulia Savar - 36 Decimals)' : 'একতা নিবাস (আশুলিয়া সাভার - ৩৬ শতাংশ)'}</option>
+                  <option value="8 Katha Share">{language === 'en' ? '8 Katha Share (1100-1200 SFT)' : '৮ কাঠা প্রজেক্ট শেয়ার (১১০০ - ১২০০ SFT)'}</option>
+                  <option value="10 Katha Share">{language === 'en' ? '10 Katha Share (1400-1500 SFT)' : '১০ কাঠা প্রজেক্ট শেয়ার (১৪০০ - ১৫০০ SFT)'}</option>
+                  <option value="12 Katha Share">{language === 'en' ? '12 Katha Share (1700-1800 SFT)' : '১২ কাঠা প্রজেক্ট শেয়ার (১৭০০ - ১৮০০ SFT)'}</option>
                   {prefilledUnit && <option value={`Unit ${prefilledUnit}`}>{language === 'en' ? `Specific Unit ${prefilledUnit}` : `বিশেষ চিহ্নিত ইউনিট ${prefilledUnit}`}</option>}
                 </select>
               </div>
