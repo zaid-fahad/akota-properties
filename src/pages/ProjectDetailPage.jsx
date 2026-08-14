@@ -96,37 +96,37 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
         <div className="container mx-auto px-4 md:px-6 space-y-16">
           
           {/* Key Specifications Grid */}
-          <div className="bg-white p-8 md:p-12 rounded-[3.5rem] shadow-2xl border border-slate-100">
+          <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-slate-200">
             <h2 className="text-3xl font-black text-slate-900 mb-8 flex items-center gap-3">
               <Building className="text-emerald-600" size={32} />
               {language === 'en' ? 'Project Overview & Specifications' : 'প্রজেক্ট স্পেসিফিকেশন ও ওভারভিউ'}
             </h2>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">{t('statLocation')}</span>
+              <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statLocation')}</span>
                 <span className="text-slate-900 font-black text-base mt-1 block">উত্তরা ১৫নং সেক্টর, দিয়াবাড়ি</span>
               </div>
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">{t('statPrice')}</span>
-                <span className="text-emerald-600 font-black text-lg mt-1 block">৳ {project.priceStart}</span>
+              <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statPrice')}</span>
+                <span className="text-emerald-700 font-black text-lg mt-1 block">৳ {project.priceStart}</span>
               </div>
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">{t('statFloors')}</span>
+              <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statFloors')}</span>
                 <span className="text-slate-900 font-black text-base mt-1 block">{project.totalFloors}</span>
               </div>
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">{t('statHandover')}</span>
+              <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statHandover')}</span>
                 <span className="text-slate-900 font-black text-base mt-1 block">{projHandover}</span>
               </div>
             </div>
 
             {/* Features List */}
-            <div className="mt-10 pt-8 border-t border-slate-100">
+            <div className="mt-10 pt-8 border-t border-slate-200">
               <h3 className="text-xl font-black text-slate-900 mb-6">{t('highlightsLabel')}</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 {project.features.map((feat, idx) => (
-                  <div key={idx} className="flex items-center gap-3 bg-emerald-50/60 p-4 rounded-2xl border border-emerald-100 font-bold text-slate-800 text-sm">
+                  <div key={idx} className="flex items-center gap-3 bg-emerald-50/80 p-4 rounded-xl border border-emerald-200 font-bold text-slate-900 text-sm">
                     <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
                     <span>{language === 'en' ? ((project.featuresEn && project.featuresEn[idx]) || feat) : feat}</span>
                   </div>
@@ -136,7 +136,7 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
           </div>
 
           {/* Photo Gallery Grid */}
-          <div className="bg-white p-8 md:p-12 rounded-[3.5rem] shadow-2xl border border-slate-100">
+          <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-slate-200">
             <h2 className="text-3xl font-black text-slate-900 mb-8 flex items-center gap-3">
               <Maximize className="text-emerald-600" size={28} />
               {language === 'en' ? 'Project Gallery & Renders' : 'প্রজেক্ট ফটো ক্যাটালগ'}
@@ -147,9 +147,9 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
                 <div 
                   key={idx}
                   onClick={() => setSelectedImage(imgUrl)}
-                  className="group relative rounded-2xl overflow-hidden shadow-md cursor-pointer h-60 bg-slate-900 hover:shadow-xl transition-all"
+                  className="group relative rounded-xl overflow-hidden shadow-md cursor-pointer h-60 bg-slate-900 hover:shadow-xl transition-all"
                 >
-                  <img src={imgUrl} alt={`${projName} ${idx + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <img src={imgUrl} alt={`${projName} ${idx + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="bg-white text-slate-900 px-4 py-2 rounded-full font-black text-xs shadow-lg flex items-center gap-1.5">
                       <Eye size={14} /> {t('zoomIn')}
@@ -165,19 +165,19 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
           <UnitAvailability onOpenBooking={onOpenBooking} />
 
           {/* Consultation Banner */}
-          <div className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 rounded-[3rem] p-8 md:p-12 text-white flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl border border-emerald-700/40">
+          <div className="bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-950 rounded-2xl p-8 md:p-12 text-white flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl border border-emerald-800/60">
             <div className="space-y-2 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 text-xs font-black px-3.5 py-1 rounded-full border border-emerald-400/30">
                 <ShieldCheck size={16} /> 100% Risk Free Investment
               </div>
               <h3 className="text-2xl md:text-4xl font-black">{projName} {language === 'en' ? 'Booking Open' : 'বুকিং চলছে'}</h3>
-              <p className="text-emerald-100/80 text-sm font-medium">
+              <p className="text-emerald-100/90 text-sm font-medium">
                 {language === 'en' ? 'Contact our corporate office to schedule a site visit.' : 'প্রজেক্ট ভিডিও ও পেপারস দেখতে অফিসে আসুন।'}
               </p>
             </div>
             <button
               onClick={() => onOpenBooking(projName)}
-              className="bg-white text-emerald-950 hover:bg-emerald-50 px-8 py-4 rounded-2xl font-black text-base shadow-xl shrink-0 transition-all hover:scale-105"
+              className="bg-white text-emerald-950 hover:bg-emerald-50 px-8 py-4 rounded-xl font-black text-base shadow-xl shrink-0 transition-all hover:scale-105"
             >
               {t('btnConsultation')}
             </button>
