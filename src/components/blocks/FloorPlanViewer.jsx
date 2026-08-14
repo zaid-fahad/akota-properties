@@ -22,7 +22,7 @@ export default function FloorPlanViewer({ onOpenBrochure, onOpenBooking }) {
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight">
             {t('floorHeading1')} <span className="text-emerald-600">{t('floorHeading2')}</span>
           </h2>
-          <p className="text-slate-500 text-base md:text-lg mt-4 font-medium">
+          <p className="text-slate-700 text-base md:text-lg mt-4 font-medium leading-relaxed">
             {t('floorSubtitle')}
           </p>
           <div className="w-20 h-1.5 bg-emerald-600 rounded-full mx-auto mt-6"></div>
@@ -34,10 +34,10 @@ export default function FloorPlanViewer({ onOpenBrochure, onOpenBooking }) {
             <button
               key={idx}
               onClick={() => setActivePlanIndex(idx)}
-              className={`px-6 py-3.5 rounded-2xl text-sm font-black transition-all ${
+              className={`px-6 py-3.5 rounded-xl text-sm font-black transition-all ${
                 activePlanIndex === idx
                   ? 'bg-emerald-600 text-white shadow-xl shadow-emerald-600/30 scale-105'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-slate-100 text-slate-800 hover:bg-slate-200'
               }`}
             >
               {language === 'en' ? (item.typeEn || item.type) : item.type}
@@ -46,11 +46,11 @@ export default function FloorPlanViewer({ onOpenBrochure, onOpenBooking }) {
         </div>
 
         {/* Main Floor Plan Detail Card */}
-        <div className="max-w-6xl mx-auto bg-white rounded-[3.5rem] shadow-2xl overflow-hidden grid lg:grid-cols-12 border border-slate-100">
+        <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden grid lg:grid-cols-12 border border-slate-200">
           
           {/* Image Column */}
-          <div className="lg:col-span-6 p-8 lg:p-12 bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-100 flex flex-col justify-between">
-            <div className="relative group rounded-3xl overflow-hidden shadow-lg border border-slate-200 bg-white">
+          <div className="lg:col-span-6 p-8 lg:p-12 bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200 flex flex-col justify-between">
+            <div className="relative group rounded-2xl overflow-hidden shadow-md border border-slate-200 bg-white">
               <img 
                 src={plan.image} 
                 alt={plan.type} 
@@ -64,11 +64,11 @@ export default function FloorPlanViewer({ onOpenBrochure, onOpenBooking }) {
               </div>
             </div>
 
-            <div className="mt-6 flex items-center justify-between text-xs font-bold text-slate-500">
+            <div className="mt-6 flex items-center justify-between text-xs font-bold text-slate-700">
               <span>* {language === 'en' ? 'Architect blueprint dimensions' : 'সকল মাপ আর্কিটেক্ট ব্লু-প্রিন্ট ভিত্তিক'}</span>
               <button 
                 onClick={() => setZoomImage(plan.image)}
-                className="text-emerald-600 hover:underline flex items-center gap-1"
+                className="text-emerald-700 hover:text-emerald-800 font-extrabold hover:underline flex items-center gap-1"
               >
                 <Maximize size={14} /> {t('fullscreenView')}
               </button>
@@ -82,47 +82,47 @@ export default function FloorPlanViewer({ onOpenBrochure, onOpenBooking }) {
                 {language === 'en' ? (plan.kathaEn || plan.katha) : plan.katha}
               </div>
               <h3 className="text-3xl font-black text-slate-900 mb-4">{language === 'en' ? (plan.typeEn || plan.type) : plan.type}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
+              <p className="text-slate-700 text-sm leading-relaxed mb-6 font-medium">
                 {language === 'en' ? 'Designed to maximize natural airflow and contemporary aesthetic elegance.' : 'নাগরিক স্বাচ্ছন্দ্য ও আধুনিক রুচির সমন্বয়ে এই ইউনিটে প্রতিটি ইঞ্চি জায়গা দক্ষতার সাথে ব্যবহার করা হয়েছে।'}
               </p>
 
               {/* Specs Grid */}
               <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="flex items-center gap-3 font-bold text-slate-800 text-sm bg-slate-50 p-3 rounded-xl border border-slate-100">
+                <div className="flex items-center gap-3 font-bold text-slate-800 text-sm bg-slate-50 p-3.5 rounded-xl border border-slate-200">
                   <CheckCircle2 className="text-emerald-600 shrink-0" size={18} />
                   <span>{plan.bedrooms} {t('beds')}</span>
                 </div>
-                <div className="flex items-center gap-3 font-bold text-slate-800 text-sm bg-slate-50 p-3 rounded-xl border border-slate-100">
+                <div className="flex items-center gap-3 font-bold text-slate-800 text-sm bg-slate-50 p-3.5 rounded-xl border border-slate-200">
                   <CheckCircle2 className="text-emerald-600 shrink-0" size={18} />
                   <span>{plan.bathrooms} {t('baths')}</span>
                 </div>
-                <div className="flex items-center gap-3 font-bold text-slate-800 text-sm bg-slate-50 p-3 rounded-xl border border-slate-100">
+                <div className="flex items-center gap-3 font-bold text-slate-800 text-sm bg-slate-50 p-3.5 rounded-xl border border-slate-200">
                   <CheckCircle2 className="text-emerald-600 shrink-0" size={18} />
                   <span>{plan.balconies} {t('balconies')}</span>
                 </div>
-                <div className="flex items-center gap-3 font-bold text-slate-800 text-sm bg-slate-50 p-3 rounded-xl border border-slate-100">
+                <div className="flex items-center gap-3 font-bold text-slate-800 text-sm bg-slate-50 p-3.5 rounded-xl border border-slate-200">
                   <CheckCircle2 className="text-emerald-600 shrink-0" size={18} />
                   <span>{language === 'en' ? 'Living & Dining' : 'লিভিং ও ডাইনিং'}</span>
                 </div>
               </div>
 
               {/* Room Dimensions */}
-              <div className="space-y-2 border-t border-slate-100 pt-6 text-xs text-slate-600">
-                <div className="flex justify-between py-1 border-b border-slate-50">
-                  <span className="font-semibold text-slate-500">{t('masterBedLabel')}</span>
-                  <span className="font-bold text-slate-800">{plan.masterBed}</span>
+              <div className="space-y-2 border-t border-slate-200 pt-6 text-xs text-slate-700">
+                <div className="flex justify-between py-1.5 border-b border-slate-100">
+                  <span className="font-semibold text-slate-700">{t('masterBedLabel')}</span>
+                  <span className="font-bold text-slate-900">{plan.masterBed}</span>
                 </div>
-                <div className="flex justify-between py-1 border-b border-slate-50">
-                  <span className="font-semibold text-slate-500">{t('childBedLabel')}</span>
-                  <span className="font-bold text-slate-800">{plan.childBed}</span>
+                <div className="flex justify-between py-1.5 border-b border-slate-100">
+                  <span className="font-semibold text-slate-700">{t('childBedLabel')}</span>
+                  <span className="font-bold text-slate-900">{plan.childBed}</span>
                 </div>
-                <div className="flex justify-between py-1 border-b border-slate-50">
-                  <span className="font-semibold text-slate-500">{t('livingLabel')}</span>
-                  <span className="font-bold text-slate-800">{plan.living}</span>
+                <div className="flex justify-between py-1.5 border-b border-slate-100">
+                  <span className="font-semibold text-slate-700">{t('livingLabel')}</span>
+                  <span className="font-bold text-slate-900">{plan.living}</span>
                 </div>
-                <div className="flex justify-between py-1">
-                  <span className="font-semibold text-slate-500">{t('kitchenLabel')}</span>
-                  <span className="font-bold text-slate-800">{plan.kitchen}</span>
+                <div className="flex justify-between py-1.5">
+                  <span className="font-semibold text-slate-700">{t('kitchenLabel')}</span>
+                  <span className="font-bold text-slate-900">{plan.kitchen}</span>
                 </div>
               </div>
 
@@ -132,13 +132,13 @@ export default function FloorPlanViewer({ onOpenBrochure, onOpenBooking }) {
             <div className="mt-8 space-y-3">
               <button
                 onClick={onOpenBrochure}
-                className="w-full bg-slate-900 hover:bg-slate-800 text-white py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-2 shadow-xl transition-all"
+                className="w-full bg-slate-900 hover:bg-slate-800 text-white py-4 rounded-xl font-black text-sm flex items-center justify-center gap-2 shadow-lg transition-all"
               >
                 <Download size={18} className="text-emerald-400" /> {t('downloadPdf')}
               </button>
               <button
                 onClick={onOpenBooking}
-                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-2xl font-extrabold text-xs flex items-center justify-center gap-2 transition-colors"
+                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3.5 rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-md"
               >
                 {t('btnBookFloor')} <ChevronRight size={16} />
               </button>
