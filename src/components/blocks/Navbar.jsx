@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Building, Phone, Menu, X, ArrowRight, ShieldCheck, Globe } from 'lucide-react';
+import { Building2, Phone, Menu, X, ArrowRight, ShieldCheck, Globe } from 'lucide-react';
 import { PROJECT_INFO } from '../../data/projectData';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -19,7 +19,6 @@ export default function Navbar({ onOpenBooking }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setMenuOpen(false);
     window.scrollTo(0, 0);
@@ -35,32 +34,31 @@ export default function Navbar({ onOpenBooking }) {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 shadow-md">
-      {/* Top Banner Notice Bar - Sticky on Desktop & Mobile */}
-      <div className="bg-slate-950 text-slate-300 text-[11px] sm:text-xs py-1.5 sm:py-2 px-3 sm:px-4 border-b border-slate-800/80">
+      {/* Top Banner Notice Bar */}
+      <div className="bg-slate-950 text-slate-100 text-xs py-2 px-4 border-b border-slate-800">
         <div className="container mx-auto flex justify-between items-center gap-2">
-          <div className="flex items-center gap-2 sm:gap-4 truncate">
-            <span className="flex items-center gap-1.5 text-emerald-400 font-semibold shrink-0">
+          <div className="flex items-center gap-3 truncate">
+            <span className="flex items-center gap-1.5 text-emerald-400 font-extrabold shrink-0">
               <ShieldCheck size={14} /> <span>{t('safKablaNotice')}</span>
             </span>
             <span className="text-slate-700 hidden sm:inline">|</span>
-            <span className="text-slate-300 truncate hidden md:inline">{t('locationNotice')}</span>
+            <span className="text-slate-200 font-medium truncate hidden md:inline">{t('locationNotice')}</span>
           </div>
-          <div className="flex items-center gap-3 sm:gap-6 shrink-0">
-            <a href={`tel:${PROJECT_INFO.phonePrimary}`} className="hover:text-emerald-400 transition-colors flex items-center gap-1 font-bold text-white text-xs">
-              <Phone size={12} className="text-emerald-400" /> {PROJECT_INFO.phonePrimary}
+          <div className="flex items-center gap-4 shrink-0">
+            <a href={`tel:${PROJECT_INFO.phonePrimary}`} className="hover:text-emerald-400 transition-colors flex items-center gap-1.5 font-bold text-white text-xs">
+              <Phone size={13} className="text-emerald-400" /> {PROJECT_INFO.phonePrimary}
             </a>
 
-            {/* Language Switcher Button */}
+            {/* Language Switcher */}
             <button
               onClick={toggleLanguage}
-              className="bg-slate-800 hover:bg-emerald-700 border border-slate-700 text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full flex items-center gap-1 transition-colors"
-              title="Change Language"
+              className="bg-slate-800 hover:bg-emerald-700 border border-slate-700 text-white text-[11px] font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5 transition-colors"
             >
-              <Globe size={11} className="text-emerald-400" />
+              <Globe size={12} className="text-emerald-400" />
               <span>{language === 'bn' ? 'English' : 'বাংলা'}</span>
             </button>
 
-            <span className="bg-emerald-600 text-white text-[9px] sm:text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-full hidden sm:inline-block">
+            <span className="bg-emerald-700 text-white text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-full hidden sm:inline-block">
               {t('bookingNotice')}
             </span>
           </div>
@@ -71,24 +69,24 @@ export default function Navbar({ onOpenBooking }) {
       <nav 
         className={`w-full transition-all duration-300 ${
           scrolled || !isHomePage
-            ? 'bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-100' 
-            : 'bg-gradient-to-b from-slate-950/90 via-slate-950/70 to-transparent py-3.5 md:py-4'
+            ? 'bg-white shadow-lg py-3 border-b border-slate-200' 
+            : 'bg-slate-950/95 backdrop-blur-md py-4 border-b border-slate-800/80'
         }`}
       >
         <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
           {/* Brand Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="bg-emerald-600 group-hover:bg-emerald-500 p-2 rounded-xl shadow-lg shadow-emerald-600/30 transition-transform group-hover:scale-105">
-              <Building className="text-white" size={22} />
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="bg-emerald-700 group-hover:bg-emerald-600 p-2.5 rounded-xl shadow-md transition-colors">
+              <Building2 className="text-white" size={22} />
             </div>
             <div>
               <div className={`text-lg sm:text-xl font-black tracking-tight leading-none ${
                 !scrolled && isHomePage ? 'text-white' : 'text-slate-900'
               }`}>
-                AKOTA <span className="text-emerald-600">PROPERTIES</span>
+                AKOTA <span className="text-emerald-700">PROPERTIES</span>
               </div>
-              <div className={`text-[9px] sm:text-[10px] font-bold tracking-widest uppercase mt-0.5 ${
-                !scrolled && isHomePage ? 'text-emerald-200' : 'text-slate-500'
+              <div className={`text-[10px] font-bold tracking-widest uppercase mt-1 ${
+                !scrolled && isHomePage ? 'text-emerald-300' : 'text-slate-600'
               }`}>
                 {t('companySubName')}
               </div>
@@ -104,10 +102,10 @@ export default function Navbar({ onOpenBooking }) {
                 className={({ isActive }) =>
                   `text-sm font-bold transition-all relative py-1 ${
                     isActive 
-                      ? 'text-emerald-600 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-emerald-600 after:rounded-full'
+                      ? 'text-emerald-700 font-extrabold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-emerald-700 after:rounded-full'
                       : !scrolled && isHomePage
                         ? 'text-slate-100 hover:text-emerald-400'
-                        : 'text-slate-700 hover:text-emerald-600'
+                        : 'text-slate-700 hover:text-emerald-700'
                   }`
                 }
               >
@@ -120,10 +118,10 @@ export default function Navbar({ onOpenBooking }) {
           <div className="hidden lg:flex items-center gap-4">
             <a
               href={`tel:${PROJECT_INFO.phonePrimary}`}
-              className={`p-2 rounded-full border transition-all ${
+              className={`p-2.5 rounded-xl border transition-all ${
                 !scrolled && isHomePage 
-                  ? 'border-white/30 text-white hover:bg-white/10' 
-                  : 'border-slate-200 text-slate-700 hover:bg-slate-50'
+                  ? 'border-slate-700 text-white hover:bg-slate-800' 
+                  : 'border-slate-300 text-slate-800 hover:bg-slate-100'
               }`}
               title="Call Us"
             >
@@ -131,28 +129,28 @@ export default function Navbar({ onOpenBooking }) {
             </a>
             <button
               onClick={onOpenBooking}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-xl font-extrabold text-xs tracking-wider uppercase shadow-lg shadow-emerald-600/30 transition-all hover:shadow-emerald-600/50 active:scale-95 flex items-center gap-2"
+              className="bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-2.5 rounded-xl font-extrabold text-xs tracking-wider uppercase shadow-md transition-all active:scale-95 flex items-center gap-2"
             >
               {t('bookNow')} <ArrowRight size={14} />
             </button>
           </div>
 
-          {/* Mobile Menu & Language Toggle Button */}
+          {/* Mobile Menu & Language Toggle */}
           <div className="lg:hidden flex items-center gap-2">
             <button
               onClick={toggleLanguage}
-              className="bg-emerald-100 text-emerald-800 text-[11px] font-black px-2.5 py-1 rounded-lg border border-emerald-300"
+              className="bg-emerald-100 text-emerald-900 text-xs font-black px-3 py-1.5 rounded-lg border border-emerald-300"
             >
               {language === 'bn' ? 'EN' : 'বাংলা'}
             </button>
             <button 
-              className={`p-2 rounded-xl transition-colors ${
-                !scrolled && isHomePage ? 'text-white bg-white/10' : 'text-slate-800 bg-slate-100'
+              className={`p-2.5 rounded-xl transition-colors ${
+                !scrolled && isHomePage ? 'text-white bg-slate-800' : 'text-slate-900 bg-slate-100'
               }`}
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle Navigation Menu"
             >
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -160,21 +158,21 @@ export default function Navbar({ onOpenBooking }) {
 
       {/* Mobile Drawer Menu */}
       {menuOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm lg:hidden flex justify-end">
+        <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm lg:hidden flex justify-end">
           <div className="w-4/5 max-w-sm bg-white h-full p-6 shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-300">
             <div>
-              <div className="flex items-center justify-between pb-6 border-b border-slate-100">
-                <div className="flex items-center gap-2">
-                  <div className="bg-emerald-600 p-1.5 rounded-lg">
-                    <Building className="text-white" size={20} />
+              <div className="flex items-center justify-between pb-6 border-b border-slate-200">
+                <div className="flex items-center gap-2.5">
+                  <div className="bg-emerald-700 p-2 rounded-lg">
+                    <Building2 className="text-white" size={20} />
                   </div>
-                  <span className="font-black text-slate-900 text-lg">AKOTA PROPERTIES</span>
+                  <span className="font-black text-slate-900 text-base">AKOTA PROPERTIES</span>
                 </div>
                 <button 
                   onClick={() => setMenuOpen(false)}
-                  className="p-2 text-slate-400 hover:text-slate-600 rounded-lg"
+                  className="p-2 text-slate-500 hover:text-slate-800 rounded-lg"
                 >
-                  <X size={24} />
+                  <X size={22} />
                 </button>
               </div>
 
@@ -186,24 +184,24 @@ export default function Navbar({ onOpenBooking }) {
                     className={({ isActive }) =>
                       `px-4 py-3 rounded-xl text-base font-bold transition-all text-left flex items-center justify-between ${
                         isActive 
-                          ? 'bg-emerald-50 text-emerald-700 font-extrabold'
-                          : 'text-slate-700 hover:bg-slate-50'
+                          ? 'bg-emerald-50 text-emerald-800 font-black border border-emerald-200'
+                          : 'text-slate-800 hover:bg-slate-100'
                       }`
                     }
                   >
                     <span>{link.name}</span>
-                    <ArrowRight size={16} className="opacity-40" />
+                    <ArrowRight size={16} className="text-slate-400" />
                   </NavLink>
                 ))}
               </div>
             </div>
 
-            <div className="pt-6 border-t border-slate-100 space-y-3">
+            <div className="pt-6 border-t border-slate-200 space-y-3">
               <button
                 onClick={toggleLanguage}
-                className="w-full bg-slate-100 text-slate-800 py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2 text-sm"
+                className="w-full bg-slate-100 text-slate-900 py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2 text-sm border border-slate-200"
               >
-                <Globe size={16} className="text-emerald-600" />
+                <Globe size={16} className="text-emerald-700" />
                 <span>{language === 'bn' ? 'Switch to English' : 'বাংলায় দেখুন'}</span>
               </button>
               <button
@@ -211,9 +209,9 @@ export default function Navbar({ onOpenBooking }) {
                   setMenuOpen(false);
                   onOpenBooking();
                 }}
-                className="w-full bg-emerald-600 text-white py-3.5 rounded-xl font-bold text-center shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2"
+                className="w-full bg-emerald-700 text-white py-3.5 rounded-xl font-extrabold text-center shadow-md flex items-center justify-center gap-2"
               >
-                {t('consultationBtn')} <ArrowRight size={18} />
+                {t('consultationBtn')} <ArrowRight size={16} />
               </button>
             </div>
           </div>

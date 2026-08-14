@@ -1,5 +1,52 @@
 export const PROJECTS = [
   {
+    id: "akota-nibash",
+    name: "একতা নিবাস",
+    nameEn: "AKOTA NIBASH",
+    tagline: "আশুলিয়া বড় রাঙ্গামাটিয়ায় এক্সক্লুসিভ ফ্ল্যাট বুকিং প্রকল্প",
+    taglineEn: "Exclusive Flat Booking in Boro Rangamatia, Ashulia, Dhaka",
+    location: "সাভার আশুলিয়া, জিরাবো বাসস্ট্যান্ড থেকে ১ কি.মি. পশ্চিমে, বড় রাঙ্গামাটিয়া শেলটেক হাউজিং",
+    locationEn: "Savar Ashulia, 1 km West from Jirabo Bus Stand, Boro Rangamatia Sheltech Housing",
+    landArea: "৩৬ শতাংশ",
+    landAreaEn: "36 Decimals",
+    priceStart: "৬ লক্ষ (জমি)",
+    priceStartNum: 6,
+    totalFloors: "প্রতি ফ্লোরে ১৩ টি ইউনিট",
+    totalFloorsEn: "13 Units Per Floor",
+    totalUnits: "১৩ টি/ফ্লোর",
+    totalUnitsEn: "13 Units/Floor",
+    sizes: ["৮৫০ SFT (সম্ভাব্য)"],
+    status: "এক্সক্লুসিভ বুকিং উন্মুক্ত",
+    statusEn: "Exclusive Booking Open",
+    statusType: "hot",
+    handover: "জমি সাবকবলা ৬ লক্ষ টাকা | বুকিং ২ লক্ষ টাকা",
+    handoverEn: "Deed 6,00,000 BDT | Booking 2,00,000 BDT",
+    contactPhone: "01333878960",
+    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&q=80&w=1200",
+    gallery: [
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&q=80&w=1200"
+    ],
+    features: [
+      "৩৬ শতাংশ সুপরিসর নিষ্কণ্টক জমি",
+      "মালিকানা সাবকবলা রেজিস্ট্রি মাত্র ৬,০০,০০০/- (ছয় লক্ষ টাকা)",
+      "বুকিং মানি মাত্র ২,০০,০০০/- (দুই লক্ষ টাকা)",
+      "বাকী টাকা জমি রেজিস্ট্রেশনের সময় পরিশোধযোগ্য",
+      "নির্দিষ্ট তলা/ফ্লোর বুকিং এর সাথে সাথে সুনির্দিষ্টভাবে নির্ধারণ",
+      "যোগাযোগ/হোয়াটসঅ্যাপ: 01333878960"
+    ],
+    featuresEn: [
+      "36 Decimals spacious dispute-free land",
+      "Land ownership deed (Subkabla) cost: 6,00,000 BDT",
+      "Booking money: Only 2,00,000 BDT",
+      "Remaining balance payable during land registration",
+      "Specific floor unit confirmed immediately upon booking",
+      "Direct Call/WhatsApp: 01333878960"
+    ]
+  },
+  {
     id: "metro-view-01",
     name: "একতা মেট্রো ভিউ ০১",
     nameEn: "Ekota Metro View 01",

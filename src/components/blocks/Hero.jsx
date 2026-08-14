@@ -1,70 +1,67 @@
 import React from 'react';
-import { Star, ArrowRight, MapPin, Coins, Building, Clock, ShieldCheck, Zap } from 'lucide-react';
+import { ShieldCheck, ArrowRight, MapPin, Coins, Building2, Clock, Navigation } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 export default function Hero({ onOpenBooking, onOpenBrochure }) {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen flex items-center pt-28 sm:pt-36 md:pt-40 pb-28 lg:pb-36 overflow-hidden bg-slate-950 text-white">
-      {/* Visual Background Image with Smooth Gradient Overlay */}
+    <section className="relative min-h-[90vh] flex items-center pt-28 sm:pt-36 md:pt-40 pb-36 sm:pb-32 lg:pb-36 overflow-hidden bg-slate-950 text-white">
+      {/* Background Architectural Render with Dark Backdrop */}
       <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920" 
-          className="w-full h-full object-cover object-center brightness-75 scale-105 animate-pulse duration-[10000ms]" 
+          className="w-full h-full object-cover object-center brightness-[0.45] scale-100" 
           alt="Luxury Apartment Building in Uttara Diabari" 
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-950/60"></div>
       </div>
 
-      {/* Decorative Floating Ambient Glow */}
-      <div className="absolute top-1/4 left-10 w-96 h-96 bg-emerald-500/20 rounded-full blur-[130px] pointer-events-none"></div>
-
       <div className="container mx-auto px-4 md:px-6 relative z-10 my-auto">
-        <div className="max-w-4xl space-y-6 sm:space-y-7">
+        <div className="max-w-3xl space-y-5 sm:space-y-7">
           
-          {/* Top Tagline Badge */}
-          <div className="inline-flex items-center gap-2 bg-emerald-600/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs font-black tracking-widest uppercase shadow-xl border border-emerald-400/30">
-            <Star size={14} className="fill-emerald-300 text-emerald-300" /> {t('heroBadge')}
+          {/* Executive Tagline Badge */}
+          <div className="inline-flex items-center gap-2 bg-emerald-800 text-white px-3.5 sm:px-4 py-1.5 rounded-full text-[11px] sm:text-xs font-black tracking-widest uppercase shadow-md border border-emerald-600/50 max-w-full truncate">
+            <ShieldCheck size={14} className="text-emerald-300 shrink-0" /> 
+            <span className="truncate">{t('heroBadge')}</span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white leading-[1.1] tracking-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-[1.15] tracking-tight break-words">
             {t('heroHeading1')} <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200">
+            <span className="text-emerald-400 font-extrabold underline decoration-emerald-500 decoration-4 underline-offset-8">
               {t('heroHeading2')}
             </span>
           </h1>
 
-          {/* Descriptive Subtitle */}
-          <p className="text-base sm:text-lg md:text-xl text-slate-200 max-w-2xl font-medium leading-relaxed drop-shadow-sm">
+          {/* Subtitle with High Contrast */}
+          <p className="text-slate-100 text-sm sm:text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
             {t('heroSubtitle')}
           </p>
 
-          {/* Key Feature Bullets */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl text-xs sm:text-sm font-bold text-emerald-100">
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/10">
+          {/* Bullet Highlights */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 max-w-2xl text-xs sm:text-sm font-bold text-slate-100">
+            <div className="flex items-center gap-2.5 bg-slate-900/90 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-slate-800">
               <ShieldCheck size={18} className="text-emerald-400 shrink-0" />
               <span>{t('bulletSafKabla')}</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/10">
-              <Zap size={18} className="text-emerald-400 shrink-0" />
+            <div className="flex items-center gap-2.5 bg-slate-900/90 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-slate-800">
+              <Navigation size={18} className="text-emerald-400 shrink-0" />
               <span>{t('bulletMetro')}</span>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-3 sm:gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-2">
             <button 
               onClick={onOpenBooking} 
-              className="bg-emerald-600 hover:bg-emerald-500 text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl font-black text-sm sm:text-base md:text-lg shadow-2xl shadow-emerald-900/60 flex items-center gap-3 transition-all hover:-translate-y-1 active:scale-95 border border-emerald-400/40"
+              className="w-full sm:w-auto bg-emerald-700 hover:bg-emerald-600 text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-xl font-black text-sm sm:text-base shadow-xl flex items-center justify-center gap-2.5 transition-all active:scale-95 border border-emerald-500/30"
             >
-              {t('btnConsultation')} <ArrowRight size={20} />
+              {t('btnConsultation')} <ArrowRight size={18} />
             </button>
             <button 
               onClick={onOpenBrochure}
-              className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-2xl font-extrabold text-sm sm:text-base md:text-lg transition-all hover:-translate-y-0.5 active:scale-95"
+              className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-xl font-extrabold text-sm sm:text-base transition-all text-center"
             >
               {t('btnBrochure')}
             </button>
@@ -73,48 +70,48 @@ export default function Hero({ onOpenBooking, onOpenBrochure }) {
         </div>
       </div>
 
-      {/* Stats Summary Strip at Bottom */}
-      <div className="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-md shadow-2xl py-4 sm:py-6 border-t border-emerald-100/50 z-20">
+      {/* Stats Summary Strip */}
+      <div className="absolute bottom-0 inset-x-0 bg-slate-900 border-t border-slate-800 py-3.5 sm:py-5 z-20 shadow-2xl">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 divide-y sm:divide-y-0 sm:divide-x divide-slate-800">
             
-            <div className="flex items-center gap-3 sm:gap-4 px-2 sm:px-4">
-              <div className="p-2.5 sm:p-3 bg-emerald-100 text-emerald-700 rounded-2xl shrink-0">
-                <MapPin size={22} className="sm:w-6 sm:h-6" />
+            <div className="flex items-center gap-2.5 sm:gap-4 px-1 sm:px-4">
+              <div className="p-2 sm:p-3 bg-emerald-950 text-emerald-400 border border-emerald-800 rounded-xl shrink-0">
+                <MapPin size={18} className="sm:w-5 sm:h-5" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-slate-400">{t('statLocation')}</p>
-                <p className="font-extrabold text-slate-900 text-xs sm:text-sm">{t('statLocationVal')}</p>
+                <p className="font-extrabold text-white text-xs sm:text-sm truncate">{t('statLocationVal')}</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 sm:gap-4 px-2 sm:px-4 pt-2 sm:pt-0">
-              <div className="p-2.5 sm:p-3 bg-emerald-100 text-emerald-700 rounded-2xl shrink-0">
-                <Coins size={22} className="sm:w-6 sm:h-6" />
+            <div className="flex items-center gap-2.5 sm:gap-4 px-1 sm:px-4 pt-2 sm:pt-0">
+              <div className="p-2 sm:p-3 bg-emerald-950 text-emerald-400 border border-emerald-800 rounded-xl shrink-0">
+                <Coins size={18} className="sm:w-5 sm:h-5" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-slate-400">{t('statPrice')}</p>
-                <p className="font-extrabold text-emerald-600 text-xs sm:text-base">{t('statPriceVal')}</p>
+                <p className="font-extrabold text-emerald-400 text-xs sm:text-base truncate">{t('statPriceVal')}</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 sm:gap-4 px-2 sm:px-4 pt-2 sm:pt-0">
-              <div className="p-2.5 sm:p-3 bg-emerald-100 text-emerald-700 rounded-2xl shrink-0">
-                <Building size={22} className="sm:w-6 sm:h-6" />
+            <div className="flex items-center gap-2.5 sm:gap-4 px-1 sm:px-4 pt-2 sm:pt-0">
+              <div className="p-2 sm:p-3 bg-emerald-950 text-emerald-400 border border-emerald-800 rounded-xl shrink-0">
+                <Building2 size={18} className="sm:w-5 sm:h-5" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-slate-400">{t('statFloors')}</p>
-                <p className="font-extrabold text-slate-900 text-xs sm:text-sm">{t('statFloorsVal')}</p>
+                <p className="font-extrabold text-white text-xs sm:text-sm truncate">{t('statFloorsVal')}</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 sm:gap-4 px-2 sm:px-4 pt-2 sm:pt-0">
-              <div className="p-2.5 sm:p-3 bg-emerald-100 text-emerald-700 rounded-2xl shrink-0">
-                <Clock size={22} className="sm:w-6 sm:h-6" />
+            <div className="flex items-center gap-2.5 sm:gap-4 px-1 sm:px-4 pt-2 sm:pt-0">
+              <div className="p-2 sm:p-3 bg-emerald-950 text-emerald-400 border border-emerald-800 rounded-xl shrink-0">
+                <Clock size={18} className="sm:w-5 sm:h-5" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-slate-400">{t('statHandover')}</p>
-                <p className="font-extrabold text-slate-900 text-xs sm:text-sm">{t('statHandoverVal')}</p>
+                <p className="font-extrabold text-white text-xs sm:text-sm truncate">{t('statHandoverVal')}</p>
               </div>
             </div>
 

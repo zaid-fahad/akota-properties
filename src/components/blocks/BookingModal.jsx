@@ -9,7 +9,7 @@ export default function BookingModal({ isOpen, onClose, prefilledUnit = null }) 
     fullName: '',
     phone: '',
     email: '',
-    shareType: prefilledUnit ? `Unit ${prefilledUnit}` : '8 Katha Share (1100 SFT)',
+    shareType: prefilledUnit ? `Unit ${prefilledUnit}` : 'AKOTA NIBASH (Ashulia Savar - 36 Decimals)',
     preferredDate: '',
     message: ''
   });
@@ -30,25 +30,25 @@ export default function BookingModal({ isOpen, onClose, prefilledUnit = null }) 
 
   return (
     <div className="fixed inset-0 z-[100] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
-      <div className="relative max-w-xl w-full bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-100 my-8 animate-in zoom-in-95 duration-200">
+      <div className="relative max-w-xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 my-8 animate-in zoom-in-95 duration-200">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 bg-slate-100 hover:bg-slate-200 text-slate-600 p-2.5 rounded-full z-10 transition-colors"
+          className="absolute top-5 right-5 bg-slate-100 hover:bg-slate-200 text-slate-700 p-2.5 rounded-full z-10 transition-colors"
         >
           <X size={20} />
         </button>
 
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-emerald-900 to-teal-900 text-white p-8 sm:p-10 relative">
+        <div className="bg-gradient-to-r from-emerald-950 to-teal-900 text-white p-8 sm:p-10 relative">
           <div className="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider mb-3">
             <ShieldCheck size={14} /> 100% Free Consultation
           </div>
           <h3 className="text-2xl sm:text-3xl font-black">
             {prefilledUnit ? (language === 'en' ? `Unit ${prefilledUnit} Booking Request` : `ইউনিট ${prefilledUnit} বুকিং অনুরোধ`) : t('modalConsultTitle')}
           </h3>
-          <p className="text-emerald-100/80 text-xs sm:text-sm mt-2 font-medium">
+          <p className="text-emerald-100/90 text-xs sm:text-sm mt-2 font-medium">
             {t('modalConsultSubtitle')}
           </p>
         </div>
@@ -62,19 +62,19 @@ export default function BookingModal({ isOpen, onClose, prefilledUnit = null }) 
               </div>
               <div className="space-y-2">
                 <h4 className="text-2xl font-black text-slate-900">{t('thankYou')} {formData.fullName}!</h4>
-                <p className="text-slate-600 text-sm leading-relaxed max-w-sm mx-auto font-medium">
+                <p className="text-slate-700 text-sm leading-relaxed max-w-sm mx-auto font-medium">
                   {language === 'en' 
                     ? `Your booking consultation request has been received. Our senior advisor will call your mobile (${formData.phone}) shortly.`
                     : `আপনার বুকিং অনুরোধ সফলভাবে গ্রহণ করা হয়েছে। খুব শীঘ্রই আমাদের টিম আপনার প্রদত্ত নম্বরে (${formData.phone}) কল করবে।`}
                 </p>
               </div>
-              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 text-xs text-slate-500 space-y-1">
-                <p className="font-bold text-slate-800">{language === 'en' ? 'For urgent queries call:' : 'জরুরী প্রশ্নের জন্য কল করুন:'}</p>
-                <p className="text-emerald-600 font-extrabold text-sm">{PROJECT_INFO.phonePrimary}</p>
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1">
+                <p className="font-bold text-slate-900">{language === 'en' ? 'For urgent queries call:' : 'জরুরী প্রশ্নের জন্য কল করুন:'}</p>
+                <p className="text-emerald-700 font-black text-sm">{PROJECT_INFO.phonePrimary} / 01333878960</p>
               </div>
               <button
                 onClick={handleReset}
-                className="w-full bg-slate-900 text-white py-3.5 rounded-2xl font-bold text-sm hover:bg-emerald-600 transition-colors"
+                className="w-full bg-slate-900 text-white py-3.5 rounded-xl font-bold text-sm hover:bg-emerald-600 transition-colors"
               >
                 {language === 'en' ? 'Close Window' : 'পর্দায় ফিরে যান'}
               </button>
@@ -84,7 +84,7 @@ export default function BookingModal({ isOpen, onClose, prefilledUnit = null }) 
               
               {/* Full Name */}
               <div className="space-y-1.5">
-                <label className="text-xs font-black uppercase text-slate-500 tracking-wider flex items-center gap-1.5">
+                <label className="text-xs font-black uppercase text-slate-700 tracking-wider flex items-center gap-1.5">
                   <User size={13} className="text-emerald-600" /> {t('fullName')}
                 </label>
                 <input
@@ -93,14 +93,14 @@ export default function BookingModal({ isOpen, onClose, prefilledUnit = null }) 
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   placeholder={language === 'en' ? 'e.g. John Doe' : 'উদাঃ মোঃ রফিকুল ইসলাম'}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-3.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
                 />
               </div>
 
               {/* Phone Number & Email Grid */}
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-black uppercase text-slate-500 tracking-wider flex items-center gap-1.5">
+                  <label className="text-xs font-black uppercase text-slate-700 tracking-wider flex items-center gap-1.5">
                     <Phone size={13} className="text-emerald-600" /> {t('phoneNum')}
                   </label>
                   <input
@@ -109,11 +109,11 @@ export default function BookingModal({ isOpen, onClose, prefilledUnit = null }) 
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="01711000000"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-3.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-xs font-black uppercase text-slate-500 tracking-wider flex items-center gap-1.5">
+                  <label className="text-xs font-black uppercase text-slate-700 tracking-wider flex items-center gap-1.5">
                     <Mail size={13} className="text-emerald-600" /> {t('emailOptional')}
                   </label>
                   <input
@@ -121,44 +121,45 @@ export default function BookingModal({ isOpen, onClose, prefilledUnit = null }) 
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="example@mail.com"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-3.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
                   />
                 </div>
               </div>
 
-              {/* Select Share */}
+              {/* Select Share / Project */}
               <div className="space-y-1.5">
-                <label className="text-xs font-black uppercase text-slate-500 tracking-wider flex items-center gap-1.5">
+                <label className="text-xs font-black uppercase text-slate-700 tracking-wider flex items-center gap-1.5">
                   <Building size={13} className="text-emerald-600" /> {t('interestedShare')}
                 </label>
                 <select
                   value={formData.shareType}
                   onChange={(e) => setFormData({ ...formData, shareType: e.target.value })}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-3.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
                 >
-                  <option>{language === 'en' ? '8 Katha Share (1100-1200 SFT)' : '৮ কাঠা প্রজেক্ট শেয়ার (১১০০ - ১২০০ SFT)'}</option>
-                  <option>{language === 'en' ? '10 Katha Share (1400-1500 SFT)' : '১০ কাঠা প্রজেক্ট শেয়ার (১৪০০ - ১৫০০ SFT)'}</option>
-                  <option>{language === 'en' ? '12 Katha Share (1700-1800 SFT)' : '১২ কাঠা প্রজেক্ট শেয়ার (১৭০০ - ১৮০০ SFT)'}</option>
+                  <option value="AKOTA NIBASH">{language === 'en' ? 'AKOTA NIBASH (Ashulia Savar - 36 Decimals)' : 'একতা নিবাস (আশুলিয়া সাভার - ৩৬ শতাংশ)'}</option>
+                  <option value="8 Katha Share">{language === 'en' ? '8 Katha Share (1100-1200 SFT)' : '৮ কাঠা প্রজেক্ট শেয়ার (১১০০ - ১২০০ SFT)'}</option>
+                  <option value="10 Katha Share">{language === 'en' ? '10 Katha Share (1400-1500 SFT)' : '১০ কাঠা প্রজেক্ট শেয়ার (১৪০০ - ১৫০০ SFT)'}</option>
+                  <option value="12 Katha Share">{language === 'en' ? '12 Katha Share (1700-1800 SFT)' : '১২ কাঠা প্রজেক্ট শেয়ার (১৭০০ - ১৮০০ SFT)'}</option>
                   {prefilledUnit && <option value={`Unit ${prefilledUnit}`}>{language === 'en' ? `Specific Unit ${prefilledUnit}` : `বিশেষ চিহ্নিত ইউনিট ${prefilledUnit}`}</option>}
                 </select>
               </div>
 
               {/* Message */}
               <div className="space-y-1.5">
-                <label className="text-xs font-black uppercase text-slate-500 tracking-wider">{t('messageLabel')}</label>
+                <label className="text-xs font-black uppercase text-slate-700 tracking-wider">{t('messageLabel')}</label>
                 <textarea
                   rows={3}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder={t('messagePlaceholder')}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-3.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-3.5 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all"
                 ></textarea>
               </div>
 
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 rounded-2xl text-base shadow-xl shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 active:scale-95"
+                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 rounded-xl text-base shadow-xl shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 active:scale-95"
               >
                 {t('submitBooking')} <ArrowRight size={18} />
               </button>

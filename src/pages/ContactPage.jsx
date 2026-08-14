@@ -10,7 +10,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    share: '8 Katha Share (1100 SFT)',
+    share: 'AKOTA NIBASH (Ashulia Savar)',
     message: ''
   });
 
@@ -27,71 +27,68 @@ export default function ContactPage() {
         canonicalUrl="https://akotaproperties.com/contact"
       />
 
-      <main className="pt-32 md:pt-40 pb-24 bg-slate-50 min-h-screen">
+      <main className="pt-28 sm:pt-36 md:pt-40 pb-20 sm:pb-24 bg-slate-50 min-h-screen">
         {/* Banner */}
-        <section className="bg-slate-950 text-white py-16 mb-16 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <section className="bg-slate-950 text-white py-12 sm:py-16 mb-10 sm:mb-16 relative">
           <div className="container mx-auto px-4 md:px-6 relative z-10 text-center max-w-3xl">
-            <span className="bg-emerald-600/80 text-white text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider mb-4 inline-block">
+            <span className="bg-emerald-700 text-white text-[11px] sm:text-xs font-black px-3.5 sm:px-4 py-1.5 rounded-full uppercase tracking-wider mb-3 inline-block shadow-md">
               {t('contactPageBadge')}
             </span>
-            <h1 className="text-4xl md:text-6xl font-black mb-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black mb-3 break-words">
               {t('contactPageHeading1')} <span className="text-emerald-400">{t('contactPageHeading2')}</span>
             </h1>
-            <p className="text-slate-300 text-base md:text-lg font-medium">
+            <p className="text-slate-200 text-sm sm:text-base md:text-lg font-medium leading-relaxed">
               {t('contactPageSubtitle')}
             </p>
           </div>
         </section>
 
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-6xl mx-auto bg-white rounded-[4rem] shadow-2xl overflow-hidden grid md:grid-cols-12 border border-slate-100">
+          <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-12 border border-slate-200">
             
             {/* Left Contact Details Card */}
-            <div className="md:col-span-5 bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-900 p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden">
-              <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
-              
-              <div className="relative z-10 space-y-8">
+            <div className="md:col-span-5 bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-950 p-6 sm:p-10 text-white flex flex-col justify-between relative overflow-hidden">
+              <div className="relative z-10 space-y-6 sm:space-y-8">
                 <div>
-                  <h2 className="text-3xl font-black mb-2">{t('officeInfoTitle')}</h2>
-                  <p className="text-emerald-100/70 text-xs font-medium">{t('officeHours')}</p>
+                  <h2 className="text-2xl sm:text-3xl font-black mb-1.5">{t('officeInfoTitle')}</h2>
+                  <p className="text-emerald-200 text-xs font-medium">{t('officeHours')}</p>
                 </div>
 
-                <div className="space-y-6 text-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-emerald-800/60 rounded-2xl text-emerald-400 shrink-0 border border-emerald-700/50">
-                      <MapPin size={22} />
+                <div className="space-y-5 text-xs sm:text-sm">
+                  <div className="flex items-start gap-3.5">
+                    <div className="p-2.5 bg-emerald-800/80 rounded-xl text-emerald-300 shrink-0 border border-emerald-700/60">
+                      <MapPin size={20} />
                     </div>
                     <div>
                       <h4 className="font-extrabold text-white">{t('officeAddressLabel')}</h4>
-                      <p className="text-emerald-100/70 text-xs mt-1 leading-relaxed">
+                      <p className="text-emerald-100/90 text-xs mt-1 leading-relaxed font-medium">
                         {language === 'en' ? 'Level 4, Block C, Metro Rail North Plaza, Sector 15, Uttara, Dhaka-1230' : PROJECT_INFO.officeAddress}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-emerald-800/60 rounded-2xl text-emerald-400 shrink-0 border border-emerald-700/50">
-                      <Phone size={22} />
+                  <div className="flex items-start gap-3.5">
+                    <div className="p-2.5 bg-emerald-800/80 rounded-xl text-emerald-300 shrink-0 border border-emerald-700/60">
+                      <Phone size={20} />
                     </div>
                     <div>
                       <h4 className="font-extrabold text-white">{t('hotlineLabel')}</h4>
-                      <a href={`tel:${PROJECT_INFO.phonePrimary}`} className="text-emerald-300 font-black text-sm block mt-1 hover:underline">
-                        {PROJECT_INFO.phonePrimary}
+                      <a href={`tel:${PROJECT_INFO.phonePrimary}`} className="text-emerald-300 font-black text-xs sm:text-sm block mt-0.5 hover:underline">
+                        {PROJECT_INFO.phonePrimary} / 01333878960
                       </a>
-                      <a href={`tel:${PROJECT_INFO.phoneSecondary}`} className="text-emerald-100/70 text-xs block hover:underline">
+                      <a href={`tel:${PROJECT_INFO.phoneSecondary}`} className="text-emerald-100/90 text-xs block hover:underline font-medium">
                         {PROJECT_INFO.phoneSecondary}
                       </a>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-emerald-800/60 rounded-2xl text-emerald-400 shrink-0 border border-emerald-700/50">
-                      <Mail size={22} />
+                  <div className="flex items-start gap-3.5">
+                    <div className="p-2.5 bg-emerald-800/80 rounded-xl text-emerald-300 shrink-0 border border-emerald-700/60">
+                      <Mail size={20} />
                     </div>
                     <div>
                       <h4 className="font-extrabold text-white">{t('emailLabel')}</h4>
-                      <a href={`mailto:${PROJECT_INFO.email}`} className="text-emerald-300 text-xs block mt-1 hover:underline">
+                      <a href={`mailto:${PROJECT_INFO.email}`} className="text-emerald-300 text-xs block mt-0.5 hover:underline font-semibold">
                         {PROJECT_INFO.email}
                       </a>
                     </div>
@@ -99,11 +96,11 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="pt-8 border-t border-emerald-800/60 relative z-10">
-                <p className="text-xs font-black uppercase tracking-widest text-emerald-400 mb-3">{t('followUs')}</p>
-                <div className="flex gap-3">
+              <div className="pt-6 sm:pt-8 border-t border-emerald-800/80 relative z-10 mt-6 sm:mt-0">
+                <p className="text-[10px] font-black uppercase tracking-widest text-emerald-400 mb-2.5">{t('followUs')}</p>
+                <div className="flex flex-wrap gap-2.5">
                   {['Facebook', 'LinkedIn', 'YouTube'].map((net, i) => (
-                    <span key={i} className="bg-white/10 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-2 rounded-xl cursor-pointer transition-colors">
+                    <span key={i} className="bg-white/10 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-xl cursor-pointer transition-colors">
                       {net}
                     </span>
                   ))}
@@ -113,72 +110,73 @@ export default function ContactPage() {
             </div>
 
             {/* Right Contact Form */}
-            <div className="md:col-span-7 p-8 sm:p-12 flex flex-col justify-center">
-              <h3 className="text-3xl font-black text-slate-900 mb-2">{t('formTitle')}</h3>
-              <p className="text-slate-500 text-xs sm:text-sm mb-8 font-medium">
+            <div className="md:col-span-7 p-6 sm:p-10 flex flex-col justify-center">
+              <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mb-1.5">{t('formTitle')}</h3>
+              <p className="text-slate-700 text-xs sm:text-sm mb-6 font-medium leading-relaxed">
                 {t('formSubtitle')}
               </p>
 
               {submitted ? (
-                <div className="bg-emerald-50 border border-emerald-200 p-8 rounded-3xl text-center space-y-4">
-                  <CheckCircle2 size={48} className="text-emerald-600 mx-auto" />
-                  <h4 className="text-2xl font-black text-emerald-900">{t('thankYou')} {formData.name}!</h4>
-                  <p className="text-slate-600 text-sm font-medium">
+                <div className="bg-emerald-50 border border-emerald-200 p-6 sm:p-8 rounded-2xl text-center space-y-3">
+                  <CheckCircle2 size={44} className="text-emerald-600 mx-auto" />
+                  <h4 className="text-xl sm:text-2xl font-black text-emerald-950">{t('thankYou')} {formData.name}!</h4>
+                  <p className="text-slate-700 text-xs sm:text-sm font-medium">
                     {t('msgSuccess')}
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                  <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-black uppercase text-slate-400">{t('yourName')}</label>
+                      <label className="text-[11px] font-black uppercase text-slate-700">{t('yourName')}</label>
                       <input 
                         required 
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder={language === 'en' ? 'John Doe' : 'মোঃ রফিকুল ইসলাম'} 
-                        className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-3.5 text-sm font-semibold outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500"
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-xs font-black uppercase text-slate-400">{t('mobileNum')}</label>
+                      <label className="text-[11px] font-black uppercase text-slate-700">{t('mobileNum')}</label>
                       <input 
                         required 
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="01711000000" 
-                        className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-3.5 text-sm font-semibold outline-none focus:ring-2 focus:ring-emerald-500"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-black uppercase text-slate-400">{t('interestedProjectShare')}</label>
+                    <label className="text-[11px] font-black uppercase text-slate-700">{t('interestedProjectShare')}</label>
                     <select 
                       value={formData.share}
                       onChange={(e) => setFormData({ ...formData, share: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-3.5 text-sm font-semibold outline-none focus:ring-2 focus:ring-emerald-500"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500"
                     >
-                      <option>{language === 'en' ? '8 Katha Share (1100 SFT)' : '৮ কাঠা প্রজেক্ট শেয়ার (১১০০ SFT)'}</option>
-                      <option>{language === 'en' ? '10 Katha Share (1400 SFT)' : '১০ কাঠা প্রজেক্ট শেয়ার (১৪০০ SFT)'}</option>
-                      <option>{language === 'en' ? '12 Katha Share (1700 SFT)' : '১২ কাঠা প্রজেক্ট শেয়ার (১৭০০ SFT)'}</option>
+                      <option value="AKOTA NIBASH">{language === 'en' ? 'AKOTA NIBASH (Ashulia Savar)' : 'একতা নিবাস (আশুলিয়া সাভার)'}</option>
+                      <option value="8 Katha Share">{language === 'en' ? '8 Katha Share (1100 SFT)' : '৮ কাঠা প্রজেক্ট শেয়ার (১১০০ SFT)'}</option>
+                      <option value="10 Katha Share">{language === 'en' ? '10 Katha Share (1400 SFT)' : '১০ কাঠা প্রজেক্ট শেয়ার (১৪০০ SFT)'}</option>
+                      <option value="12 Katha Share">{language === 'en' ? '12 Katha Share (1700 SFT)' : '১২ কাঠা প্রজেক্ট শেয়ার (১৭০০ SFT)'}</option>
                     </select>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-black uppercase text-slate-400">{t('messageLabel')}</label>
+                    <label className="text-[11px] font-black uppercase text-slate-700">{t('messageLabel')}</label>
                     <textarea 
-                      rows={4} 
+                      rows={3} 
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder={t('messagePlaceholder')}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-3.5 text-sm font-semibold outline-none focus:ring-2 focus:ring-emerald-500"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500"
                     ></textarea>
                   </div>
 
-                  <button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 rounded-2xl text-base shadow-xl shadow-emerald-600/30 transition-all flex items-center justify-center gap-2">
-                    <Send size={18} /> {t('sendMsgBtn')}
+                  <button className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-black py-3.5 rounded-xl text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                    <Send size={16} /> {t('sendMsgBtn')}
                   </button>
                 </form>
               )}
@@ -187,12 +185,12 @@ export default function ContactPage() {
           </div>
 
           {/* Location Map */}
-          <div className="mt-16 bg-white p-8 rounded-[3.5rem] shadow-xl border border-slate-100">
+          <div className="mt-12 sm:mt-16 bg-white p-5 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
             <div className="flex items-center gap-2 mb-4">
-              <MapPin size={24} className="text-emerald-600" />
-              <h3 className="text-2xl font-black text-slate-900">{t('mapHeader')}</h3>
+              <MapPin size={22} className="text-emerald-700" />
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900">{t('mapHeader')}</h3>
             </div>
-            <div className="w-full h-80 bg-slate-200 rounded-3xl overflow-hidden relative shadow-inner border border-slate-300">
+            <div className="w-full h-64 sm:h-80 bg-slate-200 rounded-2xl overflow-hidden relative shadow-inner border border-slate-300">
               <iframe 
                 title="Akota Properties Location Map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14594.137837887754!2d90.3703964!3d23.8706362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c46b681c2089%3A0xe51070529d4432c6!2sUttara%20Sector%2015%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd" 

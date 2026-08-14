@@ -42,49 +42,49 @@ export default function BrochureModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-[100] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="relative max-w-xl w-full bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-100 animate-in zoom-in-95 duration-200">
+      <div className="relative max-w-xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 animate-in zoom-in-95 duration-200">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 bg-slate-100 hover:bg-slate-200 text-slate-600 p-2.5 rounded-full z-10 transition-colors"
+          className="absolute top-5 right-5 bg-slate-100 hover:bg-slate-200 text-slate-700 p-2.5 rounded-full z-10 transition-colors"
         >
           <X size={20} />
         </button>
 
         {/* Modal Header */}
-        <div className="bg-slate-900 text-white p-8 relative">
+        <div className="bg-slate-950 text-white p-8 relative">
           <div className="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider mb-3">
             <FileText size={14} /> Official Brochure PDF
           </div>
           <h3 className="text-2xl font-black">{t('brochureModalTitle')}</h3>
-          <p className="text-slate-300 text-xs mt-1">
+          <p className="text-slate-200 text-xs mt-1 font-medium">
             {t('brochureModalSub')}
           </p>
         </div>
 
         {/* Body Content */}
         <div className="p-8 space-y-6">
-          <div className="flex items-center gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+          <div className="flex items-center gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
             <div className="w-16 h-20 bg-emerald-700 text-white rounded-xl flex items-center justify-center shadow-md shrink-0 font-black text-xs text-center p-1">
               PDF<br/>CATALOG
             </div>
             <div className="text-xs space-y-1">
               <h4 className="font-extrabold text-slate-900 text-sm">Akota_Properties_Full_Brochure.pdf</h4>
-              <p className="text-slate-500">{language === 'en' ? 'File Size: 4.5 MB | Edition: 2026' : 'ফাইল সাইজ: ৪.৫ মেগাবাইট | সংস্করণ: ২০২৬'}</p>
-              <p className="text-emerald-600 font-bold flex items-center gap-1">
+              <p className="text-slate-700 font-medium">{language === 'en' ? 'File Size: 4.5 MB | Edition: 2026' : 'ফাইল সাইজ: ৪.৫ মেগাবাইট | সংস্করণ: ২০২৬'}</p>
+              <p className="text-emerald-700 font-bold flex items-center gap-1">
                 <CheckCircle2 size={13} /> {language === 'en' ? 'Includes High-Res Blueprints' : 'হাই-রেজুলেশন ব্লু-প্রিন্ট অন্তর্ভুক্ত'}
               </p>
             </div>
           </div>
 
           {downloaded ? (
-            <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl text-center space-y-2">
+            <div className="bg-emerald-50 border border-emerald-300 p-4 rounded-xl text-center space-y-2">
               <CheckCircle2 size={28} className="text-emerald-600 mx-auto" />
-              <p className="font-black text-emerald-900 text-sm">
+              <p className="font-black text-emerald-950 text-sm">
                 {language === 'en' ? 'Your brochure catalog has been downloaded!' : 'আপনার ব্রোশিয়ারটি ডাউনলোড হয়েছে!'}
               </p>
-              <p className="text-xs text-emerald-700">
+              <p className="text-xs text-emerald-800 font-semibold">
                 {language === 'en' 
                   ? `For further details call us: ${PROJECT_INFO.phonePrimary}`
                   : `ফাইলটি চেক করুন। যেকোনো বিষয়ে জানতে আমাদের কল করুন: ${PROJECT_INFO.phonePrimary}`}
@@ -94,13 +94,13 @@ export default function BrochureModal({ isOpen, onClose }) {
             <div className="space-y-4">
               <button
                 onClick={handleDownload}
-                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 rounded-2xl text-sm shadow-xl shadow-emerald-600/30 transition-all flex items-center justify-center gap-2"
+                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 rounded-xl text-sm shadow-xl shadow-emerald-600/30 transition-all flex items-center justify-center gap-2"
               >
                 <Download size={18} /> {t('downloadDirectPdf')}
               </button>
 
               <div className="relative flex items-center justify-center">
-                <span className="bg-white px-3 text-[11px] font-bold text-slate-400 z-10">{t('orGetWhatsapp')}</span>
+                <span className="bg-white px-3 text-[11px] font-bold text-slate-600 z-10">{t('orGetWhatsapp')}</span>
                 <div className="absolute inset-0 border-t border-slate-200 top-1/2"></div>
               </div>
 
