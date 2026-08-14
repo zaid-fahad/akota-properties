@@ -7,7 +7,7 @@ import { PROJECTS } from '../data/projectData';
 import { useLanguage } from '../context/LanguageContext';
 import { 
   MapPin, Building2, CheckCircle2, ArrowRight, 
-  Sparkles, Maximize, X, ShieldCheck, ArrowLeft, Eye 
+  Award, Maximize, X, ShieldCheck, ArrowLeft, Eye 
 } from 'lucide-react';
 
 export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
@@ -60,7 +60,7 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
             <div className="max-w-4xl space-y-4">
               <div className="flex flex-wrap items-center gap-2.5">
                 <span className="bg-emerald-700 text-white text-[11px] sm:text-xs font-black px-3.5 sm:px-4 py-1.5 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow-md">
-                  <Sparkles size={13} className="shrink-0" /> {projStatus}
+                  <Award size={14} className="shrink-0" /> {projStatus}
                 </span>
                 <span className="bg-white/10 backdrop-blur-md border border-white/20 text-emerald-300 text-[11px] sm:text-xs font-extrabold px-3 py-1.5 rounded-full">
                   {projLand} {language === 'en' ? 'Project' : 'শেয়ার প্রজেক্ট'}

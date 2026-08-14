@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, ArrowRight, MapPin, Coins, Building2, Clock, Zap } from 'lucide-react';
+import { ShieldCheck, ArrowRight, MapPin, Coins, Building2, Clock, Navigation } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 export default function Hero({ onOpenBooking, onOpenBrochure }) {
@@ -46,7 +46,7 @@ export default function Hero({ onOpenBooking, onOpenBrochure }) {
               <span>{t('bulletSafKabla')}</span>
             </div>
             <div className="flex items-center gap-2.5 bg-slate-900/90 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-slate-800">
-              <Zap size={18} className="text-emerald-400 shrink-0" />
+              <Navigation size={18} className="text-emerald-400 shrink-0" />
               <span>{t('bulletMetro')}</span>
             </div>
           </div>

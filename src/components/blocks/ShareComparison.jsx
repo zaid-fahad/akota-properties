@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Maximize, ArrowRight, ShieldCheck, Bed, Bath, Compass } from 'lucide-react';
+import { Maximize, ArrowRight, ShieldCheck, Bed, Bath, Compass, Award } from 'lucide-react';
 import { SHARES } from '../../data/projectData';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -39,8 +39,8 @@ export default function ShareComparison({ onOpenBooking }) {
               <div>
                 {/* Popular Badge */}
                 {item.popular && (
-                  <div className="inline-block bg-emerald-700 text-white font-extrabold text-[11px] uppercase px-3 py-1 rounded-md mb-4">
-                    {t('popularShare')}
+                  <div className="inline-flex items-center gap-1.5 bg-emerald-700 text-white font-extrabold text-[11px] uppercase px-3 py-1 rounded-md mb-4">
+                    <Award size={13} /> {t('popularShare')}
                   </div>
                 )}
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/blocks/SEOHead';
-import { MapPin, ArrowRight, CheckCircle2, Sparkles, ExternalLink } from 'lucide-react';
+import { MapPin, ArrowRight, CheckCircle2, ExternalLink, Award } from 'lucide-react';
 import { PROJECTS } from '../data/projectData';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -49,7 +49,7 @@ export default function ProjectsPage({ onOpenBooking }) {
                   />
                   <div className="absolute top-4 left-4 sm:top-6 sm:left-6 max-w-[85%]">
                     <span className="bg-emerald-700 text-white font-extrabold text-[10px] sm:text-xs uppercase px-3 sm:px-4 py-1.5 rounded-full shadow-md flex items-center gap-1.5 truncate">
-                      <Sparkles size={13} className="shrink-0" /> <span className="truncate">{language === 'en' ? (proj.statusEn || proj.status) : proj.status}</span>
+                      <Award size={14} className="shrink-0" /> <span className="truncate">{language === 'en' ? (proj.statusEn || proj.status) : proj.status}</span>
                     </span>
                   </div>
                   <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 p-3 bg-slate-950/90 backdrop-blur-sm rounded-xl border border-slate-800 text-white">
