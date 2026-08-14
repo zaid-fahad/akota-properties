@@ -1,0 +1,91 @@
+export const PROJECTS = [
+  {
+    id: "metro-view-01",
+    name: "একতা মেট্রো ভিউ ০১",
+    nameEn: "Ekota Metro View 01",
+    tagline: "মেট্রোরেল ১নং স্টেশন ঘেঁষে ১০ তলা লাক্সারি রেসিডেন্সিয়াল",
+    location: "উত্তরা ১৫নং সেক্টর, দিয়াবাড়ি (স্টেশন-১ হতে ১০০ মিটার)",
+    landArea: "৮ কাঠা",
+    priceStart: "২৫ লক্ষ",
+    totalFloors: "১০ তলা (B+G+9)",
+    totalUnits: "৩৬ টি",
+    sizes: ["১১০০ SFT", "১২০০ SFT"],
+    status: "বুকিং দ্রুত সম্পন্ন হচ্ছে (৭০% বুকড)",
+    statusType: "hot",
+    handover: "জুন ২০২৭",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200",
+    gallery: [
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&q=80&w=1200"
+    ],
+    features: [
+      "মেট্রোরেল স্টেশন থেকে মাত্র ২ মিনিটের পথ",
+      "দক্ষিণমুখী কর্নার প্লট, পর্যাপ্ত আলো-বাতাস",
+      "৮.০ মাত্রার ভূমিকম্প নিরোধক ডিজাইন (BNBC কোড)",
+      "সাব-স্টেশন ও ফুল পাওয়ার ব্যাকআপ জেনারেটর",
+      "ছাদে সুইমিং পুল ও সবুজ বাগান"
+    ]
+  },
+  {
+    id: "metro-view-02",
+    name: "একতা মেট্রো ভিউ ০২",
+    nameEn: "Ekota Metro View 02",
+    tagline: "প্রশান্তময় লেকভিউ পরিবেশ ও ১০ কাঠার এলিগেন্ট শেয়ারিং প্রজেক্ট",
+    location: "উত্তরা ১৫নং সেক্টর, রোড ১২, দিয়াবাড়ি, ঢাকা",
+    landArea: "১০ কাঠা",
+    priceStart: "৩০ লক্ষ",
+    totalFloors: "১০ তলা (B+G+9)",
+    totalUnits: "৩৬ টি",
+    sizes: ["১৪০০ SFT", "১৫০০ SFT"],
+    status: "নতুন বুকিং উন্মুক্ত",
+    statusType: "new",
+    handover: "ডিসেম্বর ২০২৮",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200",
+    gallery: [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1200"
+    ],
+    features: [
+      "সামনে ৬০ ফিট প্রশস্ত রাজউক সড়ক",
+      "অভিজাত লেকভিউ অ্যাপার্টমেন্ট",
+      "ডাবল বেসমেন্ট কার পার্কিং",
+      "হাই-স্পিড প্যাসেঞ্জার ও কার্গো লিফট",
+      "২৪/৭ সিসিটিভি ও স্মার্ট সিকিউরিটি একসেস"
+    ]
+  },
+  {
+    id: "metro-view-03",
+    name: "একতা মেট্রো ভিউ ০৩",
+    nameEn: "Ekota Metro View 03",
+    tagline: "১২ কাঠার প্রিমিয়াম ডুপ্লেক্স ও রাজকীয় লার্জ কন্ডোমিনিয়াম",
+    location: "উত্তরা ১৫নং সেক্টর, লেক ড্রাইভ এভিনিউ, দিয়াবাড়ি, ঢাকা",
+    landArea: "১২ কাঠা",
+    priceStart: "৩৫ লক্ষ",
+    totalFloors: "১০ তলা (B+G+9)",
+    totalUnits: "৩৬ টি",
+    sizes: ["১৭০০ SFT", "১৮০০ SFT"],
+    status: "প্রাক-বুকিং চলছে",
+    statusType: "upcoming",
+    handover: "জুন ২০৩০",
+    image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200",
+    gallery: [
+      "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200"
+    ],
+    features: [
+      "১৮০০ স্কয়ার ফিট পর্যন্ত লাক্সারি স্পেস",
+      "ইনডোর জিম ও কমিউনিটি প্রেয়ার হল",
+      "বাচ্চাদের আধুনিক প্লে-জোন ও গেমস রুম",
+      "সোনারগাঁও ও রাজউক উত্তরা মডেল কলেজের কাছে",
+      "১০০% সাফ-কাবলা জমি রেজিস্ট্রি নিশ্চয়তা"
+    ]
+  }
+];
+
+export default PROJECTS;
