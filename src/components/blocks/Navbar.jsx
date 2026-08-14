@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Building, Phone, Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Building, Phone, Menu, X, ArrowRight, ShieldCheck, Globe } from 'lucide-react';
 import { PROJECT_INFO } from '../../data/projectData';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function Navbar({ onOpenBooking }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -24,60 +26,71 @@ export default function Navbar({ onOpenBooking }) {
   }, [location.pathname]);
 
   const navLinks = [
-    { name: "হোম", path: "/" },
-    { name: "প্রজেক্টসমূহ", path: "/projects" },
-    { name: "ফ্লোর প্ল্যান", path: "/floor-plans" },
-    { name: "ল্যান্ড শেয়ারিং সুবিধা", path: "/benefits" },
-    { name: "যোগাযোগ", path: "/contact" }
+    { name: t('navHome'), path: "/" },
+    { name: t('navProjects'), path: "/projects" },
+    { name: t('navFloorPlans'), path: "/floor-plans" },
+    { name: t('navBenefits'), path: "/benefits" },
+    { name: t('navContact'), path: "/contact" }
   ];
 
   return (
-    <>
-      {/* Top Banner Notice Bar */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 hidden md:block">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1 text-emerald-400 font-semibold">
-              <ShieldCheck size={14} /> ১০০% জমি সাফ-কাবলা রেজিস্ট্রি নিশ্চয়তা
+    <header className="fixed top-0 left-0 right-0 z-50 shadow-md">
+      {/* Top Banner Notice Bar - Sticky on Desktop & Mobile */}
+      <div className="bg-slate-950 text-slate-300 text-[11px] sm:text-xs py-1.5 sm:py-2 px-3 sm:px-4 border-b border-slate-800/80">
+        <div className="container mx-auto flex justify-between items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-4 truncate">
+            <span className="flex items-center gap-1.5 text-emerald-400 font-semibold shrink-0">
+              <ShieldCheck size={14} /> <span>{t('safKablaNotice')}</span>
             </span>
-            <span className="text-slate-600">|</span>
-            <span>উত্তরা ১৫নং সেক্টর, দিয়াবাড়ি (মেট্রোরেল ১ম স্টেশন সংলগ্ন)</span>
+            <span className="text-slate-700 hidden sm:inline">|</span>
+            <span className="text-slate-300 truncate hidden md:inline">{t('locationNotice')}</span>
           </div>
-          <div className="flex items-center gap-6">
-            <a href={`tel:${PROJECT_INFO.phonePrimary}`} className="hover:text-emerald-400 transition-colors flex items-center gap-1 font-bold text-white">
-              <Phone size={13} className="text-emerald-400" /> {PROJECT_INFO.phonePrimary}
+          <div className="flex items-center gap-3 sm:gap-6 shrink-0">
+            <a href={`tel:${PROJECT_INFO.phonePrimary}`} className="hover:text-emerald-400 transition-colors flex items-center gap-1 font-bold text-white text-xs">
+              <Phone size={12} className="text-emerald-400" /> {PROJECT_INFO.phonePrimary}
             </a>
-            <span className="bg-emerald-600 text-white text-[10px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-full">
-              বুকিং চলছে
+
+            {/* Language Switcher Button */}
+            <button
+              onClick={toggleLanguage}
+              className="bg-slate-800 hover:bg-emerald-700 border border-slate-700 text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full flex items-center gap-1 transition-colors"
+              title="Change Language"
+            >
+              <Globe size={11} className="text-emerald-400" />
+              <span>{language === 'bn' ? 'English' : 'বাংলা'}</span>
+            </button>
+
+            <span className="bg-emerald-600 text-white text-[9px] sm:text-[10px] uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded-full hidden sm:inline-block">
+              {t('bookingNotice')}
             </span>
           </div>
         </div>
       </div>
 
-      {/* Main Sticky Navbar */}
+      {/* Main Navigation Bar */}
       <nav 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`w-full transition-all duration-300 ${
           scrolled || !isHomePage
-            ? 'bg-white/95 backdrop-blur-md shadow-md py-3.5 border-b border-slate-100' 
-            : 'bg-gradient-to-b from-slate-950/80 to-transparent py-5'
+            ? 'bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-100' 
+            : 'bg-gradient-to-b from-slate-950/90 via-slate-950/70 to-transparent py-3.5 md:py-4'
         }`}
       >
         <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
           {/* Brand Logo */}
           <Link to="/" className="flex items-center gap-2.5 group">
             <div className="bg-emerald-600 group-hover:bg-emerald-500 p-2 rounded-xl shadow-lg shadow-emerald-600/30 transition-transform group-hover:scale-105">
-              <Building className="text-white" size={24} />
+              <Building className="text-white" size={22} />
             </div>
             <div>
-              <div className={`text-xl font-black tracking-tight leading-none ${
+              <div className={`text-lg sm:text-xl font-black tracking-tight leading-none ${
                 !scrolled && isHomePage ? 'text-white' : 'text-slate-900'
               }`}>
                 AKOTA <span className="text-emerald-600">PROPERTIES</span>
               </div>
-              <div className={`text-[10px] font-bold tracking-widest uppercase mt-0.5 ${
+              <div className={`text-[9px] sm:text-[10px] font-bold tracking-widest uppercase mt-0.5 ${
                 !scrolled && isHomePage ? 'text-emerald-200' : 'text-slate-500'
               }`}>
-                একতা প্রপার্টিজ লিমিটেড
+                {t('companySubName')}
               </div>
             </div>
           </Link>
@@ -107,33 +120,41 @@ export default function Navbar({ onOpenBooking }) {
           <div className="hidden lg:flex items-center gap-4">
             <a
               href={`tel:${PROJECT_INFO.phonePrimary}`}
-              className={`p-2.5 rounded-full border transition-all ${
+              className={`p-2 rounded-full border transition-all ${
                 !scrolled && isHomePage 
                   ? 'border-white/30 text-white hover:bg-white/10' 
                   : 'border-slate-200 text-slate-700 hover:bg-slate-50'
               }`}
-              title="কল করুন"
+              title="Call Us"
             >
-              <Phone size={18} />
+              <Phone size={16} />
             </a>
             <button
               onClick={onOpenBooking}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-xl font-extrabold text-xs tracking-wider uppercase shadow-lg shadow-emerald-600/30 transition-all hover:shadow-emerald-600/50 active:scale-95 flex items-center gap-2"
+              className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-xl font-extrabold text-xs tracking-wider uppercase shadow-lg shadow-emerald-600/30 transition-all hover:shadow-emerald-600/50 active:scale-95 flex items-center gap-2"
             >
-              বুকিং দিন <ArrowRight size={14} />
+              {t('bookNow')} <ArrowRight size={14} />
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className={`lg:hidden p-2 rounded-xl transition-colors ${
-              !scrolled && isHomePage ? 'text-white bg-white/10' : 'text-slate-800 bg-slate-100'
-            }`}
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle Navigation Menu"
-          >
-            {menuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
+          {/* Mobile Menu & Language Toggle Button */}
+          <div className="lg:hidden flex items-center gap-2">
+            <button
+              onClick={toggleLanguage}
+              className="bg-emerald-100 text-emerald-800 text-[11px] font-black px-2.5 py-1 rounded-lg border border-emerald-300"
+            >
+              {language === 'bn' ? 'EN' : 'বাংলা'}
+            </button>
+            <button 
+              className={`p-2 rounded-xl transition-colors ${
+                !scrolled && isHomePage ? 'text-white bg-white/10' : 'text-slate-800 bg-slate-100'
+              }`}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle Navigation Menu"
+            >
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -179,24 +200,25 @@ export default function Navbar({ onOpenBooking }) {
 
             <div className="pt-6 border-t border-slate-100 space-y-3">
               <button
+                onClick={toggleLanguage}
+                className="w-full bg-slate-100 text-slate-800 py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2 text-sm"
+              >
+                <Globe size={16} className="text-emerald-600" />
+                <span>{language === 'bn' ? 'Switch to English' : 'বাংলায় দেখুন'}</span>
+              </button>
+              <button
                 onClick={() => {
                   setMenuOpen(false);
                   onOpenBooking();
                 }}
                 className="w-full bg-emerald-600 text-white py-3.5 rounded-xl font-bold text-center shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2"
               >
-                বুকিং কনসালটেশন <ArrowRight size={18} />
+                {t('consultationBtn')} <ArrowRight size={18} />
               </button>
-              <a
-                href={`tel:${PROJECT_INFO.phonePrimary}`}
-                className="w-full bg-slate-100 text-slate-800 py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2 text-sm"
-              >
-                <Phone size={16} className="text-emerald-600" /> {PROJECT_INFO.phonePrimary}
-              </a>
             </div>
           </div>
         </div>
       )}
-    </>
+    </header>
   );
 }

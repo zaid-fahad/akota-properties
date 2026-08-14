@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { Building2, CheckCircle2, Lock, Clock, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Building2, ArrowRight, ShieldCheck } from 'lucide-react';
 import { UNIT_AVAILABILITY_MATRIX } from '../../data/projectData';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function UnitAvailability({ onOpenBooking }) {
   const [selectedUnit, setSelectedUnit] = useState(null);
+  const { language, t } = useLanguage();
 
   const getStatusBadge = (status) => {
     switch (status) {
       case 'available':
-        return <span className="bg-emerald-500 text-white font-extrabold text-[10px] px-2 py-0.5 rounded-md">খালি আছে</span>;
+        return <span className="bg-emerald-500 text-white font-extrabold text-[10px] px-2 py-0.5 rounded-md">{language === 'en' ? 'Available' : 'খালি আছে'}</span>;
       case 'booked':
-        return <span className="bg-slate-400 text-white font-bold text-[10px] px-2 py-0.5 rounded-md">বুকড</span>;
+        return <span className="bg-slate-400 text-white font-bold text-[10px] px-2 py-0.5 rounded-md">{language === 'en' ? 'Booked' : 'বুকড'}</span>;
       case 'reserved':
-        return <span className="bg-amber-500 text-white font-bold text-[10px] px-2 py-0.5 rounded-md">প্রসেসিং</span>;
+        return <span className="bg-amber-500 text-white font-bold text-[10px] px-2 py-0.5 rounded-md">{language === 'en' ? 'Pending' : 'প্রসেসিং'}</span>;
       default:
-        return <span className="bg-slate-700 text-slate-300 font-bold text-[10px] px-2 py-0.5 rounded-md">কমন স্পেস</span>;
+        return <span className="bg-slate-700 text-slate-300 font-bold text-[10px] px-2 py-0.5 rounded-md">{language === 'en' ? 'Facility' : 'কমন স্পেস'}</span>;
     }
   };
 
@@ -25,13 +27,13 @@ export default function UnitAvailability({ onOpenBooking }) {
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider mb-4">
-            <Building2 size={14} /> লাইভ ইউনিট স্ট্যাটাস
+            <Building2 size={14} /> {t('availBadge')}
           </div>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight">
-            ভবনের ফ্লোর অনুযায়ী <span className="text-emerald-600">ইউনিট এভেইলিবিলিটি</span>
+            {t('availHeading1')} <span className="text-emerald-600">{t('availHeading2')}</span>
           </h2>
           <p className="text-slate-500 text-base md:text-lg mt-4 font-medium">
-            ১০ তলা ভবনের (B+G+9) পছন্দের ফ্লোর ও দিক অনুযায়ী আপনার পছন্দের ইউনিটটি বাছাই করুন।
+            {t('availSubtitle')}
           </p>
           <div className="w-20 h-1.5 bg-emerald-600 rounded-full mx-auto mt-6"></div>
         </div>
@@ -40,23 +42,23 @@ export default function UnitAvailability({ onOpenBooking }) {
         <div className="max-w-4xl mx-auto bg-white p-4 rounded-2xl shadow-sm border border-slate-200 mb-8 flex flex-wrap justify-center items-center gap-6 text-xs font-bold">
           <div className="flex items-center gap-2">
             <span className="w-3.5 h-3.5 rounded-full bg-emerald-600 inline-block"></span>
-            <span>খালি আছে (বুকিং উন্মুক্ত)</span>
+            <span>{t('legendAvailable')}</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-3.5 h-3.5 rounded-full bg-slate-400 inline-block"></span>
-            <span>বুকিং সম্পন্ন</span>
+            <span>{t('legendBooked')}</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-3.5 h-3.5 rounded-full bg-amber-500 inline-block"></span>
-            <span>বুকিং প্রসেসিং চলছে</span>
+            <span>{t('legendReserved')}</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-3.5 h-3.5 rounded-full bg-slate-800 inline-block"></span>
-            <span>কমিউনিটি/পার্কিং</span>
+            <span>{t('legendFacility')}</span>
           </div>
         </div>
 
-        {/* Floor Matrix Building Representation */}
+        {/* Floor Matrix Building */}
         <div className="max-w-4xl mx-auto bg-white rounded-[3rem] p-6 md:p-10 shadow-2xl border border-slate-200/80">
           <div className="space-y-4">
             {UNIT_AVAILABILITY_MATRIX.map((row, idx) => (
@@ -65,7 +67,9 @@ export default function UnitAvailability({ onOpenBooking }) {
                 className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-emerald-200 transition-all gap-4"
               >
                 <div className="sm:w-1/3">
-                  <p className="font-black text-slate-900 text-sm">{row.floor}</p>
+                  <p className="font-black text-slate-900 text-sm">
+                    {language === 'en' ? (row.floorEn || row.floor) : row.floor}
+                  </p>
                 </div>
                 <div className="sm:w-2/3 grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {row.units.map((u, uIdx) => (
@@ -102,13 +106,13 @@ export default function UnitAvailability({ onOpenBooking }) {
           <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-600">
               <ShieldCheck size={16} className="text-emerald-600" />
-              <span>পছন্দের ইউনিট বুক করতে উপরে খালি ইউনিটে ক্লিক করুন</span>
+              <span>{t('clickUnitInstruction')}</span>
             </div>
             <button
               onClick={() => onOpenBooking()}
               className="bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold px-6 py-3 rounded-xl text-xs shadow-lg shadow-emerald-600/30 flex items-center gap-2"
             >
-              সরাসরি যোগাযোগ করুন <ArrowRight size={14} />
+              {t('directContact')} <ArrowRight size={14} />
             </button>
           </div>
 

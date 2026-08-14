@@ -1,54 +1,68 @@
 import React, { useState } from 'react';
-import { Camera, Maximize, X, ArrowRight, Eye } from 'lucide-react';
+import { Camera, X, Eye } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 const GALLERY_ITEMS = [
   {
     id: 1,
     title: "একতা মেট্রো ভিউ ফ্রন্ট এলিভেশন",
+    titleEn: "Ekota Metro View Front Elevation Renders",
     category: "exterior",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1200",
-    desc: "উত্তরা ১৫নং সেক্টরে ৬০ ফিট প্রশস্ত রোডের সংলগ্ন ১০ তলা মডার্ন বিল্ডিং"
+    desc: "উত্তরা ১৫নং সেক্টরে ৬০ ফিট প্রশস্ত রোডের সংলগ্ন ১০ তলা মডার্ন বিল্ডিং",
+    descEn: "Modern 10-storey apartment complex adjacent to 60ft wide Rajuk road in Uttara Sector 15."
   },
   {
     id: 2,
     title: "লাক্সারি ড্রয়িং ও লিভিং স্পেস",
+    titleEn: "Luxury Drawing & Living Space",
     category: "interior",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
-    desc: "প্রশস্ত ও প্রাকৃতিক আলোবাতাস পূর্ণ মডার্ন ইন্টেরিয়র ডিজাইন"
+    desc: "প্রশস্ত ও প্রাকৃতিক আলোবাতাস পূর্ণ মডার্ন ইন্টেরিয়র ডিজাইন",
+    descEn: "Spacious open-concept interior design with abundant natural ventilation."
   },
   {
     id: 3,
     title: "মাস্টার বেডরুম উইথ ব্যালকনি ভিউ",
+    titleEn: "Master Bedroom Suite with Balcony View",
     category: "interior",
     image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&q=80&w=1200",
-    desc: "কিং সাইজ মাস্টার বেডরুম এবং সুদৃশ্য খোলা বারান্দা"
+    desc: "কিং সাইজ মাস্টার বেডরুম এবং সুদৃশ্য খোলা বারান্দা",
+    descEn: "King-sized master bedroom suite with attached balcony view."
   },
   {
     id: 4,
     title: "গ্রিন রুফ ও ছাদবাগান জোন",
+    titleEn: "Green Rooftop Garden & Community Zone",
     category: "rooftop",
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200",
-    desc: "ছাদে মনোরম সবুজ বাগান, বসার স্থান এবং কমিউনিটি পার্টি স্পেস"
+    desc: "ছাদে মনোরম সবুজ বাগান, বসার স্থান এবং কমিউনিটি পার্টি স্পেস",
+    descEn: "Landscaped rooftop garden, outdoor seating lounge, and community gathering hall."
   },
   {
     id: 5,
     title: "মেট্রোরেল উত্তর স্টেশন proximity",
+    titleEn: "Metro Rail North Station Proximity",
     category: "location",
     image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?auto=format&fit=crop&q=80&w=1200",
-    desc: "মেট্রোরেল স্টেশন থেকে মাত্র ২ মিনিটে যাতায়াতের সুবিধা"
+    desc: "মেট্রোরেল স্টেশন থেকে মাত্র ২ মিনিটে যাতায়াতের সুবিধা",
+    descEn: "Prime location just 2 minutes walking distance from Metro Rail Station-1."
   },
   {
     id: 6,
     title: "মডার্ন গ্রানাইট কাউন্টার কিচেন",
+    titleEn: "Modern Granite Counter Kitchen",
     category: "interior",
     image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1200",
-    desc: "হাই-কোয়ালিটি গ্রানাইট ও মডেল ক্যাবিনেট যুক্ত কিচেন স্পেস"
+    desc: "হাই-কোয়ালিটি গ্রানাইট ও মডেল ক্যাবিনেট যুক্ত কিচেন স্পেস",
+    descEn: "High-grade granite countertops and modular cabinet fittings."
   }
 ];
 
 export default function VirtualGallery() {
   const [filter, setFilter] = useState('all');
   const [selectedImage, setSelectedImage] = useState(null);
+  const { language, t } = useLanguage();
 
   const filteredItems = filter === 'all' 
     ? GALLERY_ITEMS 
@@ -61,13 +75,13 @@ export default function VirtualGallery() {
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider mb-4">
-            <Camera size={14} /> ভার্চুয়াল ফটো গ্যালারি
+            <Camera size={14} /> {t('galleryBadge')}
           </div>
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight">
-            এক নজর দেখে নিন <span className="text-emerald-600">আমাদের প্রজেক্টের চিত্র</span>
+            {t('galleryHeading1')} <span className="text-emerald-600">{t('galleryHeading2')}</span>
           </h2>
           <p className="text-slate-500 text-base md:text-lg mt-4 font-medium">
-            উচ্চমানের কনস্ট্রাকশন ও আধুনিক আর্কিটেকচারের বাস্তব প্রতিচ্ছবি।
+            {t('gallerySubtitle')}
           </p>
           <div className="w-20 h-1.5 bg-emerald-600 rounded-full mx-auto mt-6"></div>
         </div>
@@ -75,11 +89,11 @@ export default function VirtualGallery() {
         {/* Filter Tabs */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {[
-            { label: "সব ছবি", key: "all" },
-            { label: "এক্সটেরিয়র (Exterior)", key: "exterior" },
-            { label: "ইন্টেরিয়র (Interior)", key: "interior" },
-            { label: "ছাদবাগান (Rooftop)", key: "rooftop" },
-            { label: "লোকেশন & মেট্রো", key: "location" }
+            { label: t('allPhotos'), key: "all" },
+            { label: t('exteriorPhotos'), key: "exterior" },
+            { label: t('interiorPhotos'), key: "interior" },
+            { label: t('rooftopPhotos'), key: "rooftop" },
+            { label: t('locationPhotos'), key: "location" }
           ].map(tab => (
             <button
               key={tab.key}
@@ -110,10 +124,10 @@ export default function VirtualGallery() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent p-6 flex flex-col justify-end">
                 <p className="text-emerald-400 font-extrabold text-xs uppercase tracking-wider mb-1">{item.category}</p>
-                <h3 className="text-xl font-black text-white">{item.title}</h3>
-                <p className="text-slate-300 text-xs mt-2 line-clamp-2">{item.desc}</p>
+                <h3 className="text-xl font-black text-white">{language === 'en' ? item.titleEn : item.title}</h3>
+                <p className="text-slate-300 text-xs mt-2 line-clamp-2">{language === 'en' ? item.descEn : item.desc}</p>
                 <div className="mt-4 flex items-center gap-1.5 text-emerald-300 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Eye size={16} /> বড় করে দেখুন
+                  <Eye size={16} /> {t('zoomIn')}
                 </div>
               </div>
             </div>
@@ -135,8 +149,8 @@ export default function VirtualGallery() {
             <img src={selectedImage.image} alt={selectedImage.title} className="w-full h-auto max-h-[75vh] object-contain bg-black" />
             <div className="p-6 bg-slate-900 border-t border-slate-800 text-white">
               <span className="text-xs font-extrabold text-emerald-400 uppercase tracking-widest">{selectedImage.category}</span>
-              <h3 className="text-2xl font-black mt-1">{selectedImage.title}</h3>
-              <p className="text-slate-300 text-sm mt-2 font-medium">{selectedImage.desc}</p>
+              <h3 className="text-2xl font-black mt-1">{language === 'en' ? selectedImage.titleEn : selectedImage.title}</h3>
+              <p className="text-slate-300 text-sm mt-2 font-medium">{language === 'en' ? selectedImage.descEn : selectedImage.desc}</p>
             </div>
           </div>
         </div>
