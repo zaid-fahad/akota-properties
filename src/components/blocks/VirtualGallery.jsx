@@ -80,7 +80,7 @@ export default function VirtualGallery() {
           <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight">
             {t('galleryHeading1')} <span className="text-emerald-600">{t('galleryHeading2')}</span>
           </h2>
-          <p className="text-slate-500 text-base md:text-lg mt-4 font-medium">
+          <p className="text-slate-700 text-base md:text-lg mt-4 font-medium leading-relaxed">
             {t('gallerySubtitle')}
           </p>
           <div className="w-20 h-1.5 bg-emerald-600 rounded-full mx-auto mt-6"></div>
@@ -101,7 +101,7 @@ export default function VirtualGallery() {
               className={`px-5 py-2.5 rounded-full text-xs font-black transition-all ${
                 filter === tab.key
                   ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30 scale-105'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-slate-100 text-slate-800 hover:bg-slate-200'
               }`}
             >
               {tab.label}
@@ -114,18 +114,18 @@ export default function VirtualGallery() {
           {filteredItems.map(item => (
             <div 
               key={item.id} 
-              className="group relative rounded-3xl overflow-hidden shadow-xl border border-slate-100 bg-slate-900 cursor-pointer hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              className="group relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-slate-900 cursor-pointer hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
               onClick={() => setSelectedImage(item)}
             >
               <img 
                 src={item.image} 
                 alt={item.title} 
-                className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-700 brightness-90 group-hover:brightness-100"
+                className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 group-hover:brightness-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent p-6 flex flex-col justify-end">
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent p-6 flex flex-col justify-end">
                 <p className="text-emerald-400 font-extrabold text-xs uppercase tracking-wider mb-1">{item.category}</p>
                 <h3 className="text-xl font-black text-white">{language === 'en' ? item.titleEn : item.title}</h3>
-                <p className="text-slate-300 text-xs mt-2 line-clamp-2">{language === 'en' ? item.descEn : item.desc}</p>
+                <p className="text-slate-200 text-xs mt-2 line-clamp-2">{language === 'en' ? item.descEn : item.desc}</p>
                 <div className="mt-4 flex items-center gap-1.5 text-emerald-300 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
                   <Eye size={16} /> {t('zoomIn')}
                 </div>
