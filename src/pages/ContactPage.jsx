@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import SEOHead from '../components/blocks/SEOHead';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, ShieldCheck, ArrowRight, Building } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, CheckCircle2 } from 'lucide-react';
 import { PROJECT_INFO } from '../data/projectData';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const { language, t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    share: '৮ কাঠা প্রজেক্ট (১১০০ SFT)',
+    share: '8 Katha Share (1100 SFT)',
     message: ''
   });
 
@@ -20,8 +22,8 @@ export default function ContactPage() {
   return (
     <>
       <SEOHead 
-        title="যোগাযোগ ও অফিস ঠিকানা | একতা প্রপার্টিজ লিমিটেড"
-        description="একতা প্রপার্টিজ অফিসে সরাসরি এসে প্রজেক্টের কাগজপত্র ও সিসিটিভি ফুটেজ দেখুন। উত্তরা ১৫নং সেক্টর, দিয়াবাড়ি, ঢাকা।"
+        title={language === 'en' ? "Contact Us | Akota Properties Ltd." : "যোগাযোগ ও অফিস ঠিকানা | একতা প্রপার্টিজ লিমিটেড"}
+        description={language === 'en' ? "Visit our corporate office or call us to inspect land deeds and project plans." : "একতা প্রপার্টিজ অফিসে সরাসরি এসে প্রজেক্টের কাগজপত্র ও সিসিটিভি ফুটেজ দেখুন। উত্তরা ১৫নং সেক্টর, দিয়াবাড়ি, ঢাকা।"}
         canonicalUrl="https://akotaproperties.com/contact"
       />
 
@@ -31,13 +33,13 @@ export default function ContactPage() {
           <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none"></div>
           <div className="container mx-auto px-4 md:px-6 relative z-10 text-center max-w-3xl">
             <span className="bg-emerald-600/80 text-white text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider mb-4 inline-block">
-              কাস্টমার সাপোর্ট & অফিস
+              {t('contactPageBadge')}
             </span>
             <h1 className="text-4xl md:text-6xl font-black mb-4">
-              সরাসরি যোগাযোগ করুন <span className="text-emerald-400">আমাদের সাথে</span>
+              {t('contactPageHeading1')} <span className="text-emerald-400">{t('contactPageHeading2')}</span>
             </h1>
             <p className="text-slate-300 text-base md:text-lg font-medium">
-              আমাদের কর্পোরেট অফিসে এসে প্রজেক্ট সম্পর্কিত যেকোনো নথি ও কাগজপত্র যাচাই করার জন্য সাদর আমন্ত্রণ।
+              {t('contactPageSubtitle')}
             </p>
           </div>
         </section>
@@ -51,8 +53,8 @@ export default function ContactPage() {
               
               <div className="relative z-10 space-y-8">
                 <div>
-                  <h2 className="text-3xl font-black mb-2">অফিস সংক্রান্ত তথ্য</h2>
-                  <p className="text-emerald-100/70 text-xs font-medium">সপ্তাহে ৬ দিন খোলা (সকাল ৯:০০ - সন্ধ্যা ৭:০০)</p>
+                  <h2 className="text-3xl font-black mb-2">{t('officeInfoTitle')}</h2>
+                  <p className="text-emerald-100/70 text-xs font-medium">{t('officeHours')}</p>
                 </div>
 
                 <div className="space-y-6 text-sm">
@@ -61,8 +63,10 @@ export default function ContactPage() {
                       <MapPin size={22} />
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-white">অফিসের ঠিকানা</h4>
-                      <p className="text-emerald-100/70 text-xs mt-1 leading-relaxed">{PROJECT_INFO.officeAddress}</p>
+                      <h4 className="font-extrabold text-white">{t('officeAddressLabel')}</h4>
+                      <p className="text-emerald-100/70 text-xs mt-1 leading-relaxed">
+                        {language === 'en' ? 'Level 4, Block C, Metro Rail North Plaza, Sector 15, Uttara, Dhaka-1230' : PROJECT_INFO.officeAddress}
+                      </p>
                     </div>
                   </div>
 
@@ -71,7 +75,7 @@ export default function ContactPage() {
                       <Phone size={22} />
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-white">হটলাইন & ফোন নম্বর</h4>
+                      <h4 className="font-extrabold text-white">{t('hotlineLabel')}</h4>
                       <a href={`tel:${PROJECT_INFO.phonePrimary}`} className="text-emerald-300 font-black text-sm block mt-1 hover:underline">
                         {PROJECT_INFO.phonePrimary}
                       </a>
@@ -86,7 +90,7 @@ export default function ContactPage() {
                       <Mail size={22} />
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-white">ইমেইল ঠিকানা</h4>
+                      <h4 className="font-extrabold text-white">{t('emailLabel')}</h4>
                       <a href={`mailto:${PROJECT_INFO.email}`} className="text-emerald-300 text-xs block mt-1 hover:underline">
                         {PROJECT_INFO.email}
                       </a>
@@ -96,7 +100,7 @@ export default function ContactPage() {
               </div>
 
               <div className="pt-8 border-t border-emerald-800/60 relative z-10">
-                <p className="text-xs font-black uppercase tracking-widest text-emerald-400 mb-3">সোশ্যাল মিডিয়া অনুসরণ করুন</p>
+                <p className="text-xs font-black uppercase tracking-widest text-emerald-400 mb-3">{t('followUs')}</p>
                 <div className="flex gap-3">
                   {['Facebook', 'LinkedIn', 'YouTube'].map((net, i) => (
                     <span key={i} className="bg-white/10 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-2 rounded-xl cursor-pointer transition-colors">
@@ -110,34 +114,34 @@ export default function ContactPage() {
 
             {/* Right Contact Form */}
             <div className="md:col-span-7 p-8 sm:p-12 flex flex-col justify-center">
-              <h3 className="text-3xl font-black text-slate-900 mb-2">বুকিং কনসালটেশন ফরম</h3>
+              <h3 className="text-3xl font-black text-slate-900 mb-2">{t('formTitle')}</h3>
               <p className="text-slate-500 text-xs sm:text-sm mb-8 font-medium">
-                নিচের ফরমে তথ্য প্রদান করুন, আমাদের টিম অতি দ্রুত আপনার সাথে সরাসরি যোগাযোগ করবে।
+                {t('formSubtitle')}
               </p>
 
               {submitted ? (
                 <div className="bg-emerald-50 border border-emerald-200 p-8 rounded-3xl text-center space-y-4">
                   <CheckCircle2 size={48} className="text-emerald-600 mx-auto" />
-                  <h4 className="text-2xl font-black text-emerald-900">ধন্যবাদ {formData.name}!</h4>
+                  <h4 className="text-2xl font-black text-emerald-900">{t('thankYou')} {formData.name}!</h4>
                   <p className="text-slate-600 text-sm font-medium">
-                    আপনার মেসেজটি সফলভাবে গৃহীত হয়েছে। খুব শীঘ্রই আমাদের প্রতিনিধি আপনাকে ফোন করবেন।
+                    {t('msgSuccess')}
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-black uppercase text-slate-400">আপনার নাম *</label>
+                      <label className="text-xs font-black uppercase text-slate-400">{t('yourName')}</label>
                       <input 
                         required 
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="মোঃ রফিকুল ইসলাম" 
+                        placeholder={language === 'en' ? 'John Doe' : 'মোঃ রফিকুল ইসলাম'} 
                         className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-3.5 text-sm font-semibold outline-none focus:ring-2 focus:ring-emerald-500"
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-xs font-black uppercase text-slate-400">মোবাইল নম্বর *</label>
+                      <label className="text-xs font-black uppercase text-slate-400">{t('mobileNum')}</label>
                       <input 
                         required 
                         type="tel"
@@ -150,31 +154,31 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-black uppercase text-slate-400">আগ্রহী প্রজেক্ট শেয়ার</label>
+                    <label className="text-xs font-black uppercase text-slate-400">{t('interestedProjectShare')}</label>
                     <select 
                       value={formData.share}
                       onChange={(e) => setFormData({ ...formData, share: e.target.value })}
                       className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-3.5 text-sm font-semibold outline-none focus:ring-2 focus:ring-emerald-500"
                     >
-                      <option>৮ কাঠা প্রজেক্ট শেয়ার (১১০০ SFT)</option>
-                      <option>১০ কাঠা প্রজেক্ট শেয়ার (১৪০০ SFT)</option>
-                      <option>১২ কাঠা প্রজেক্ট শেয়ার (১৭০০ SFT)</option>
+                      <option>{language === 'en' ? '8 Katha Share (1100 SFT)' : '৮ কাঠা প্রজেক্ট শেয়ার (১১০০ SFT)'}</option>
+                      <option>{language === 'en' ? '10 Katha Share (1400 SFT)' : '১০ কাঠা প্রজেক্ট শেয়ার (১৪০০ SFT)'}</option>
+                      <option>{language === 'en' ? '12 Katha Share (1700 SFT)' : '১২ কাঠা প্রজেক্ট শেয়ার (১৭০০ SFT)'}</option>
                     </select>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-black uppercase text-slate-400">মেসেজ বা প্রশ্ন</label>
+                    <label className="text-xs font-black uppercase text-slate-400">{t('messageLabel')}</label>
                     <textarea 
                       rows={4} 
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="আপনার কোনো বিশেষ প্রশ্ন থাকলে এখানে লিখুন..."
+                      placeholder={t('messagePlaceholder')}
                       className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-3.5 text-sm font-semibold outline-none focus:ring-2 focus:ring-emerald-500"
                     ></textarea>
                   </div>
 
                   <button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 rounded-2xl text-base shadow-xl shadow-emerald-600/30 transition-all flex items-center justify-center gap-2">
-                    <Send size={18} /> মেসেজ পাঠান
+                    <Send size={18} /> {t('sendMsgBtn')}
                   </button>
                 </form>
               )}
@@ -182,11 +186,11 @@ export default function ContactPage() {
 
           </div>
 
-          {/* Location Map Placeholder / Preview */}
+          {/* Location Map */}
           <div className="mt-16 bg-white p-8 rounded-[3.5rem] shadow-xl border border-slate-100">
             <div className="flex items-center gap-2 mb-4">
               <MapPin size={24} className="text-emerald-600" />
-              <h3 className="text-2xl font-black text-slate-900">গুগল ম্যাপ লোকেশন (মেট্রোরেল উত্তর স্টেশন-১ সংলগ্ন)</h3>
+              <h3 className="text-2xl font-black text-slate-900">{t('mapHeader')}</h3>
             </div>
             <div className="w-full h-80 bg-slate-200 rounded-3xl overflow-hidden relative shadow-inner border border-slate-300">
               <iframe 

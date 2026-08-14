@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { HelpCircle, ChevronDown, Quote, Star, UserCheck, ShieldCheck } from 'lucide-react';
 import { FAQS, TESTIMONIALS } from '../../data/projectData';
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function TestimonialsFAQ({ onOpenBooking }) {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const { language, t } = useLanguage();
 
   const toggleFaq = (index) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
@@ -17,13 +19,13 @@ export default function TestimonialsFAQ({ onOpenBooking }) {
         <div className="mb-24">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider mb-4">
-              <UserCheck size={14} /> ক্লায়েন্টদের মন্তব্য
+              <UserCheck size={14} /> {t('reviewsBadge')}
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight">
-              শেয়ারহোল্ডারদের <span className="text-emerald-600">অনুভূতি ও আস্থা</span>
+              {t('reviewsHeading1')} <span className="text-emerald-600">{t('reviewsHeading2')}</span>
             </h2>
             <p className="text-slate-500 text-base md:text-lg mt-4 font-medium">
-              ইতিমধ্যেই আমাদের বিভিন্ন প্রজেক্টে যারা জমি রেজিস্ট্রি করে যুক্ত হয়েছেন তাদের অভিজ্ঞতা।
+              {t('reviewsSubtitle')}
             </p>
             <div className="w-20 h-1.5 bg-emerald-600 rounded-full mx-auto mt-6"></div>
           </div>
@@ -43,15 +45,19 @@ export default function TestimonialsFAQ({ onOpenBooking }) {
                     ))}
                   </div>
                   <p className="text-slate-700 text-sm leading-relaxed font-medium italic relative z-10">
-                    "{item.quote}"
+                    "{language === 'en' ? (item.quoteEn || item.quote) : item.quote}"
                   </p>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-slate-100">
-                  <h4 className="font-black text-slate-900 text-base">{item.name}</h4>
-                  <p className="text-xs text-slate-500 font-semibold">{item.role}</p>
+                  <h4 className="font-black text-slate-900 text-base">
+                    {language === 'en' ? (item.nameEn || item.name) : item.name}
+                  </h4>
+                  <p className="text-xs text-slate-500 font-semibold">
+                    {language === 'en' ? (item.roleEn || item.role) : item.role}
+                  </p>
                   <span className="inline-block bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2.5 py-0.5 rounded-md mt-2">
-                    {item.project}
+                    {language === 'en' ? (item.projectEn || item.project) : item.project}
                   </span>
                 </div>
               </div>
@@ -63,13 +69,13 @@ export default function TestimonialsFAQ({ onOpenBooking }) {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider mb-4">
-              <HelpCircle size={14} /> সাধারণ জিজ্ঞাসাসমূহ
+              <HelpCircle size={14} /> {t('faqBadge')}
             </div>
             <h2 className="text-3xl md:text-4xl font-black text-slate-900">
-              সচরাচর জিজ্ঞাসিত <span className="text-emerald-600">প্রশ্নাভালী (FAQ)</span>
+              {t('faqHeading1')} <span className="text-emerald-600">{t('faqHeading2')}</span>
             </h2>
             <p className="text-slate-500 text-sm md:text-base mt-2 font-medium">
-              ল্যান্ড-শেয়ারিং আবাসন সংক্রান্ত সমস্ত খুটিনাটি প্রশ্নের সহজ উত্তর
+              {t('faqSubtitle')}
             </p>
           </div>
 
@@ -83,7 +89,9 @@ export default function TestimonialsFAQ({ onOpenBooking }) {
                   onClick={() => toggleFaq(idx)}
                   className="w-full text-left p-6 font-bold text-slate-900 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors"
                 >
-                  <span className="text-base md:text-lg font-black leading-snug">{faq.question}</span>
+                  <span className="text-base md:text-lg font-black leading-snug">
+                    {language === 'en' ? (faq.questionEn || faq.question) : faq.question}
+                  </span>
                   <div className={`p-2 rounded-full transition-transform duration-300 ${
                     openFaqIndex === idx ? 'bg-emerald-600 text-white rotate-180' : 'bg-slate-100 text-slate-600'
                   }`}>
@@ -93,7 +101,9 @@ export default function TestimonialsFAQ({ onOpenBooking }) {
 
                 {openFaqIndex === idx && (
                   <div className="px-6 pb-6 pt-2 text-slate-600 text-sm leading-relaxed border-t border-slate-100 bg-slate-50/50 animate-in fade-in duration-200">
-                    <p className="font-medium">{faq.answer}</p>
+                    <p className="font-medium">
+                      {language === 'en' ? (faq.answerEn || faq.answer) : faq.answer}
+                    </p>
                   </div>
                 )}
               </div>
@@ -102,15 +112,15 @@ export default function TestimonialsFAQ({ onOpenBooking }) {
 
           {/* Need More Assistance Banner */}
           <div className="mt-12 p-8 bg-white rounded-3xl border border-emerald-100 shadow-xl text-center space-y-4">
-            <h3 className="text-xl font-black text-slate-900">আপনার আরও কোনো বিশেষ প্রশ্ন আছে কি?</h3>
+            <h3 className="text-xl font-black text-slate-900">{t('moreQuestionsTitle')}</h3>
             <p className="text-slate-500 text-sm max-w-md mx-auto font-medium">
-              আমাদের কনসালট্যান্টদের সাথে সরাসরি ফোনে কথা বলুন অথবা অফিসে এসে প্রজেক্ট ভিডিও ও পেপারস যাচাই করুন।
+              {t('moreQuestionsDesc')}
             </p>
             <button
               onClick={onOpenBooking}
               className="bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-emerald-600/30 transition-all inline-flex items-center gap-2"
             >
-              <ShieldCheck size={16} /> এখনই কনসালটেশন শিডিউল করুন
+              <ShieldCheck size={16} /> {t('scheduleConsultation')}
             </button>
           </div>
 
