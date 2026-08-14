@@ -44,9 +44,10 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
         ogImage={project.image}
       />
 
-      <main className="pt-28 sm:pt-36 md:pt-40 pb-20 sm:pb-24 bg-slate-50 min-h-screen">
-        {/* Project Hero Header */}
-        <section className="bg-slate-950 text-white py-12 sm:py-16 mb-10 sm:mb-16 relative overflow-hidden">
+      <main className="pt-28 sm:pt-36 md:pt-40 pb-0 bg-slate-50 min-h-screen">
+        
+        {/* 1. Full-Width Project Hero Banner */}
+        <section className="w-full bg-slate-950 text-white py-14 sm:py-20 relative overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img src={project.image} alt={projName} className="w-full h-full object-cover brightness-[0.35]" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/50"></div>
@@ -93,97 +94,107 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
           </div>
         </section>
 
-        <div className="container mx-auto px-4 md:px-6 space-y-10 sm:space-y-16">
-          
-          {/* Key Specifications Grid */}
-          <div className="bg-white p-5 sm:p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200">
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6 flex items-center gap-2.5">
-              <Building2 className="text-emerald-700 shrink-0" size={28} />
-              <span>{language === 'en' ? 'Project Overview & Specs' : 'প্রজেক্ট স্পেসিফিকেশন ও ওভারভিউ'}</span>
-            </h2>
+        {/* 2. Full-Width Key Specifications Section */}
+        <section className="w-full py-12 sm:py-16 bg-white border-b border-slate-200">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6 flex items-center gap-2.5">
+                <Building2 className="text-emerald-700 shrink-0" size={28} />
+                <span>{language === 'en' ? 'Project Overview & Specs' : 'প্রজেক্ট স্পেসিফিকেশন ও ওভারভিউ'}</span>
+              </h2>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5">
-              <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
-                <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statLocation')}</span>
-                <span className="text-slate-900 font-black text-xs sm:text-sm mt-1 block truncate">{projLocation}</span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5">
+                <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
+                  <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statLocation')}</span>
+                  <span className="text-slate-900 font-black text-xs sm:text-sm mt-1 block truncate">{projLocation}</span>
+                </div>
+                <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
+                  <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statPrice')}</span>
+                  <span className="text-emerald-800 font-black text-xs sm:text-base mt-1 block">৳ {project.priceStart}</span>
+                </div>
+                <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
+                  <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statFloors')}</span>
+                  <span className="text-slate-900 font-black text-xs sm:text-sm mt-1 block truncate">{project.totalFloors}</span>
+                </div>
+                <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
+                  <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statHandover')}</span>
+                  <span className="text-slate-900 font-black text-xs sm:text-sm mt-1 block truncate">{projHandover}</span>
+                </div>
               </div>
-              <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
-                <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statPrice')}</span>
-                <span className="text-emerald-800 font-black text-xs sm:text-base mt-1 block">৳ {project.priceStart}</span>
-              </div>
-              <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
-                <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statFloors')}</span>
-                <span className="text-slate-900 font-black text-xs sm:text-sm mt-1 block truncate">{project.totalFloors}</span>
-              </div>
-              <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
-                <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statHandover')}</span>
-                <span className="text-slate-900 font-black text-xs sm:text-sm mt-1 block truncate">{projHandover}</span>
+
+              {/* Features List */}
+              <div className="mt-8 pt-6 border-t border-slate-200">
+                <h3 className="text-lg font-black text-slate-900 mb-4">{t('highlightsLabel')}</h3>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {project.features.map((feat, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5 bg-emerald-50/80 p-3 sm:p-3.5 rounded-xl border border-emerald-200 font-bold text-slate-900 text-xs sm:text-sm">
+                      <CheckCircle2 size={16} className="text-emerald-700 shrink-0 mt-0.5" />
+                      <span className="leading-snug">{language === 'en' ? ((project.featuresEn && project.featuresEn[idx]) || feat) : feat}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Features List */}
-            <div className="mt-8 pt-6 border-t border-slate-200">
-              <h3 className="text-lg font-black text-slate-900 mb-4">{t('highlightsLabel')}</h3>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {project.features.map((feat, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5 bg-emerald-50/80 p-3 sm:p-3.5 rounded-xl border border-emerald-200 font-bold text-slate-900 text-xs sm:text-sm">
-                    <CheckCircle2 size={16} className="text-emerald-700 shrink-0 mt-0.5" />
-                    <span className="leading-snug">{language === 'en' ? ((project.featuresEn && project.featuresEn[idx]) || feat) : feat}</span>
+        {/* 3. Full-Width Photo Gallery Section */}
+        <section className="w-full py-12 sm:py-16 bg-slate-50 border-b border-slate-200">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6 flex items-center gap-2.5">
+                <Maximize className="text-emerald-700 shrink-0" size={26} />
+                <span>{language === 'en' ? 'Project Gallery & Renders' : 'প্রজেক্ট ফটো ক্যাটালগ'}</span>
+              </h2>
+
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+                {project.gallery.map((imgUrl, idx) => (
+                  <div 
+                    key={idx}
+                    onClick={() => setSelectedImage(imgUrl)}
+                    className="group relative rounded-xl overflow-hidden shadow-sm cursor-pointer h-44 sm:h-56 bg-slate-900 hover:shadow-md transition-all border border-slate-200"
+                  >
+                    <img src={imgUrl} alt={`${projName} ${idx + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <span className="bg-white text-slate-900 px-3 py-1.5 rounded-full font-black text-[11px] shadow-md flex items-center gap-1">
+                        <Eye size={13} /> {t('zoomIn')}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
+        </section>
 
-          {/* Photo Gallery Grid */}
-          <div className="bg-white p-5 sm:p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200">
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6 flex items-center gap-2.5">
-              <Maximize className="text-emerald-700 shrink-0" size={26} />
-              <span>{language === 'en' ? 'Project Gallery & Renders' : 'প্রজেক্ট ফটো ক্যাটালগ'}</span>
-            </h2>
+        {/* 4. Full-Width Floor Plans Component */}
+        <FloorPlanViewer onOpenBrochure={onOpenBrochure} onOpenBooking={onOpenBooking} />
 
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
-              {project.gallery.map((imgUrl, idx) => (
-                <div 
-                  key={idx}
-                  onClick={() => setSelectedImage(imgUrl)}
-                  className="group relative rounded-xl overflow-hidden shadow-sm cursor-pointer h-44 sm:h-56 bg-slate-900 hover:shadow-md transition-all"
-                >
-                  <img src={imgUrl} alt={`${projName} ${idx + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="bg-white text-slate-900 px-3 py-1.5 rounded-full font-black text-[11px] shadow-md flex items-center gap-1">
-                      <Eye size={13} /> {t('zoomIn')}
-                    </span>
-                  </div>
+        {/* 5. Full-Width Unit Availability Matrix Component */}
+        <UnitAvailability onOpenBooking={onOpenBooking} />
+
+        {/* 6. Contained Bottom Consultation Banner Card */}
+        <section className="py-12 sm:py-16 bg-slate-50">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="max-w-6xl mx-auto bg-slate-950 rounded-2xl p-6 sm:p-10 text-white flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl border border-slate-800">
+              <div className="space-y-2 text-center lg:text-left">
+                <div className="inline-flex items-center gap-2 bg-emerald-900 text-emerald-300 text-xs font-black px-3 py-1 rounded-md border border-emerald-700">
+                  <ShieldCheck size={15} /> 100% Risk Free Investment
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Integrated Floor Plans & Unit Availability */}
-          <FloorPlanViewer onOpenBrochure={onOpenBrochure} onOpenBooking={onOpenBooking} />
-          <UnitAvailability onOpenBooking={onOpenBooking} />
-
-          {/* Consultation Banner */}
-          <div className="bg-slate-950 rounded-2xl p-6 sm:p-10 text-white flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl border border-slate-800">
-            <div className="space-y-2 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-emerald-900 text-emerald-300 text-xs font-black px-3 py-1 rounded-md border border-emerald-700">
-                <ShieldCheck size={15} /> 100% Risk Free Investment
+                <h3 className="text-2xl sm:text-4xl font-black">{projName} {language === 'en' ? 'Booking Open' : 'বুকিং চলছে'}</h3>
+                <p className="text-slate-300 text-xs sm:text-sm font-medium">
+                  {language === 'en' ? 'Contact our corporate office to schedule a site visit.' : 'প্রজেক্ট ভিডিও ও পেপারস দেখতে অফিসে আসুন।'}
+                </p>
               </div>
-              <h3 className="text-xl sm:text-3xl font-black">{projName} {language === 'en' ? 'Booking Open' : 'বুকিং চলছে'}</h3>
-              <p className="text-slate-300 text-xs sm:text-sm font-medium">
-                {language === 'en' ? 'Contact our corporate office to schedule a site visit.' : 'প্রজেক্ট ভিডিও ও পেপারস দেখতে অফিসে আসুন।'}
-              </p>
+              <button
+                onClick={() => onOpenBooking(projName)}
+                className="w-full sm:w-auto bg-emerald-700 hover:bg-emerald-800 text-white px-8 py-3.5 rounded-xl font-black text-sm shadow-lg shrink-0 transition-all text-center"
+              >
+                {t('btnConsultation')}
+              </button>
             </div>
-            <button
-              onClick={() => onOpenBooking(projName)}
-              className="w-full sm:w-auto bg-emerald-700 hover:bg-emerald-800 text-white px-8 py-3.5 rounded-xl font-black text-sm shadow-md shrink-0 transition-all text-center"
-            >
-              {t('btnConsultation')}
-            </button>
           </div>
-
-        </div>
+        </section>
 
         {/* Lightbox Modal */}
         {selectedImage && (
