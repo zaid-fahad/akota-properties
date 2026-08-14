@@ -55,6 +55,7 @@ src/
    - Create GitHub issues prior to feature/bugfix implementation.
    - Assign issues to yourself (`@me`).
    - All Pull Requests must target `dev` first before merging into `main`.
+   - **Ask before creating a Pull Request**: Not every commit needs a PR. Confirm with the user first.
    - **No Emojis** in commit titles, issue descriptions, or PR body summaries.
 
 ---
