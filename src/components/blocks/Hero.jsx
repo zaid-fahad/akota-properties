@@ -5,7 +5,7 @@ import { PROJECT_INFO } from '../../data/projectData';
 
 export default function Hero({ onOpenBooking, onOpenBrochure }) {
   return (
-    <section className="relative min-h-[92vh] flex items-center pt-24 pb-16 overflow-hidden bg-slate-950 text-white">
+    <section className="relative min-h-[92vh] flex items-center pt-32 md:pt-40 pb-16 overflow-hidden bg-slate-950 text-white">
       {/* Visual Background Image with Smooth Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
