@@ -1,7 +1,9 @@
 export const FLOOR_SPECS = [
   {
-    type: "Type A (১১০০ - ১২০০ SFT)",
+    type: "টাইপ এ (১১০০ - ১২০০ SFT)",
+    typeEn: "Type A (1100 - 1200 SFT)",
     katha: "৮ কাঠা প্রজেক্ট",
+    kathaEn: "8 Katha Project",
     bedrooms: 3,
     bathrooms: 3,
     balconies: 2,
@@ -11,11 +13,13 @@ export const FLOOR_SPECS = [
     masterBed: "১৩' x ১২' সাথে অ্যাটাচড বাথ ও বারান্দা",
     childBed: "১২' x ১১' সুপরিসর রুম",
     guestBed: "১১' x ১০' ভেন্টিলেটেড রুম",
-    image: "https://images.unsplash.com/photo-1580587767303-9ef70618304a?auto=format&fit=crop&q=80&w=800"
+    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1200"
   },
   {
-    type: "Type B (১৪০০ - ১৫০০ SFT)",
+    type: "টাইপ বি (১৪০০ - ১৫০০ SFT)",
+    typeEn: "Type B (1400 - 1500 SFT)",
     katha: "১০ কাঠা প্রজেক্ট",
+    kathaEn: "10 Katha Project",
     bedrooms: 3,
     bathrooms: 3,
     balconies: 3,
@@ -25,11 +29,13 @@ export const FLOOR_SPECS = [
     masterBed: "১৫' x ১৩' সাথে ওয়াক-ইন ক্লোজেট",
     childBed: "১৩' x ১২' সুন্দর ভিউসম্পন্ন বারান্দা",
     guestBed: "১২' x ১২' স্ট্যান্ডার্ড বেডরুম",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800"
+    image: "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?auto=format&fit=crop&q=80&w=1200"
   },
   {
-    type: "Type C (১৭০০ - ১৮০০ SFT)",
+    type: "টাইপ সি (১৭০০ - ১৮০০ SFT)",
+    typeEn: "Type C (1700 - 1800 SFT)",
     katha: "১২ কাঠা প্রজেক্ট",
+    kathaEn: "12 Katha Project",
     bedrooms: 4,
     bathrooms: 4,
     balconies: 3,
@@ -39,7 +45,7 @@ export const FLOOR_SPECS = [
     masterBed: "১৬' x ১৪' কিংসাইজ মাস্টার স্যুট",
     childBed: "১৪' x ১৩' ডাবল বেডরুম",
     guestBed: "১৩' x ১২' স্পেশাস গেস্ট রুম",
-    image: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&q=80&w=800"
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=1200"
   }
 ];
 
