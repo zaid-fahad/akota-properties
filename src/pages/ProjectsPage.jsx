@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SEOHead from '../components/blocks/SEOHead';
-import { MapPin, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { MapPin, ArrowRight, CheckCircle2, Sparkles, ExternalLink } from 'lucide-react';
 import { PROJECTS } from '../data/projectData';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -38,10 +39,10 @@ export default function ProjectsPage({ onOpenBooking }) {
             {PROJECTS.map((proj) => (
               <div 
                 key={proj.id}
-                className="bg-white rounded-[3.5rem] shadow-2xl overflow-hidden border border-slate-100 grid lg:grid-cols-12 hover:shadow-2xl transition-all duration-300"
+                className="bg-white rounded-[3.5rem] shadow-2xl overflow-hidden border border-slate-100 grid lg:grid-cols-12 hover:shadow-2xl transition-all duration-300 group"
               >
                 {/* Project Image & Status Badge */}
-                <div className="lg:col-span-6 relative group overflow-hidden bg-slate-900">
+                <Link to={`/projects/${proj.id}`} className="lg:col-span-6 relative overflow-hidden bg-slate-900 block">
                   <img 
                     src={proj.image} 
                     alt={proj.name} 
@@ -58,14 +59,17 @@ export default function ProjectsPage({ onOpenBooking }) {
                       <span>{t('handoverLabel')} {language === 'en' ? (proj.handoverEn || proj.handover) : proj.handover}</span>
                     </div>
                   </div>
-                </div>
+                </Link>
 
                 {/* Project Info & Specs */}
                 <div className="lg:col-span-6 p-8 lg:p-12 flex flex-col justify-between">
                   <div>
-                    <h2 className="text-3xl font-black text-slate-900 mb-2">
-                      {language === 'en' ? (proj.nameEn || proj.name) : proj.name}
-                    </h2>
+                    <Link to={`/projects/${proj.id}`}>
+                      <h2 className="text-3xl font-black text-slate-900 mb-2 hover:text-emerald-600 transition-colors flex items-center gap-2">
+                        {language === 'en' ? (proj.nameEn || proj.name) : proj.name}
+                        <ExternalLink size={20} className="opacity-0 group-hover:opacity-100 text-emerald-600 transition-opacity" />
+                      </h2>
+                    </Link>
                     <p className="text-emerald-600 font-extrabold text-sm mb-4 flex items-center gap-1.5">
                       <MapPin size={16} /> {language === 'en' ? (proj.locationEn || proj.location) : proj.location}
                     </p>
@@ -105,11 +109,17 @@ export default function ProjectsPage({ onOpenBooking }) {
 
                   {/* Actions */}
                   <div className="flex flex-wrap gap-4 pt-4 border-t border-slate-100">
-                    <button
-                      onClick={onOpenBooking}
+                    <Link
+                      to={`/projects/${proj.id}`}
                       className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white py-4 rounded-2xl font-black text-sm shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 transition-all"
                     >
-                      {t('viewBookingFloor')} <ArrowRight size={16} />
+                      {language === 'en' ? 'View Project Details' : 'প্রজেক্টের বিস্তারিত দেখুন'} <ArrowRight size={16} />
+                    </Link>
+                    <button
+                      onClick={() => onOpenBooking(language === 'en' ? proj.nameEn : proj.name)}
+                      className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-4 rounded-2xl font-extrabold text-sm transition-all"
+                    >
+                      {t('bookNow')}
                     </button>
                   </div>
                 </div>
