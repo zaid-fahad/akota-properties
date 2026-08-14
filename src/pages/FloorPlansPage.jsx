@@ -15,18 +15,17 @@ export default function FloorPlansPage({ onOpenBooking, onOpenBrochure }) {
         canonicalUrl="https://akotaproperties.com/floor-plans"
       />
 
-      <main className="pt-32 md:pt-40 pb-24 bg-slate-50 min-h-screen">
+      <main className="pt-28 sm:pt-36 md:pt-40 pb-20 sm:pb-24 bg-slate-50 min-h-screen">
         {/* Page Banner */}
-        <section className="bg-slate-950 text-white py-16 mb-12 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <section className="bg-slate-950 text-white py-12 sm:py-16 mb-8 sm:mb-12 relative overflow-hidden">
           <div className="container mx-auto px-4 md:px-6 relative z-10 text-center max-w-3xl">
-            <span className="bg-emerald-600/80 text-white text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider mb-4 inline-block">
+            <span className="bg-emerald-700 text-white text-[11px] sm:text-xs font-black px-3.5 sm:px-4 py-1.5 rounded-full uppercase tracking-wider mb-3 inline-block shadow-md">
               {t('floorBadge')}
             </span>
-            <h1 className="text-4xl md:text-6xl font-black mb-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black mb-3 break-words">
               {t('floorHeading1')} <span className="text-emerald-400">{t('floorHeading2')}</span>
             </h1>
-            <p className="text-slate-300 text-base md:text-lg font-medium">
+            <p className="text-slate-200 text-sm sm:text-base md:text-lg font-medium leading-relaxed">
               {t('floorSubtitle')}
             </p>
           </div>

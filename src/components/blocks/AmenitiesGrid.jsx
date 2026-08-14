@@ -1,13 +1,13 @@
 import React from 'react';
-import { Zap, ShieldCheck, Star, Layout, Lock, Car, ArrowRight } from 'lucide-react';
+import { Power, ShieldCheck, Building2, Trees, Lock, Car, ArrowRight, Award } from 'lucide-react';
 import { AMENITIES } from '../../data/projectData';
 import { useLanguage } from '../../context/LanguageContext';
 
 const iconMap = {
-  Zap: <Zap size={24} />,
+  Power: <Power size={24} />,
   ShieldCheck: <ShieldCheck size={24} />,
-  Star: <Star size={24} />,
-  Layout: <Layout size={24} />,
+  Building2: <Building2 size={24} />,
+  Trees: <Trees size={24} />,
   Lock: <Lock size={24} />,
   Car: <Car size={24} />
 };
@@ -22,7 +22,7 @@ export default function AmenitiesGrid({ onOpenBooking }) {
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 bg-emerald-800 text-white text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider mb-3">
-            <Star size={14} /> {t('amenitiesBadge')}
+            <Award size={14} /> {t('amenitiesBadge')}
           </div>
           <h2 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight">
             {t('amenitiesHeading1')} <span className="text-emerald-700">{t('amenitiesHeading2')}</span>
@@ -41,7 +41,7 @@ export default function AmenitiesGrid({ onOpenBooking }) {
               className="bg-slate-50 border border-slate-200 p-7 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 hover:border-emerald-500 group"
             >
               <div className="w-14 h-14 rounded-xl bg-emerald-100 border border-emerald-300 text-emerald-800 flex items-center justify-center mb-5 group-hover:bg-emerald-700 group-hover:text-white transition-colors">
-                {iconMap[item.icon] || <Star size={24} />}
+                {iconMap[item.icon] || <Building2 size={24} />}
               </div>
               <h3 className="text-lg font-black text-slate-900 mb-2 group-hover:text-emerald-800 transition-colors">
                 {language === 'en' ? (item.titleEn || item.title) : item.title}
@@ -54,7 +54,7 @@ export default function AmenitiesGrid({ onOpenBooking }) {
         </div>
 
         {/* Guarantee Banner */}
-        <div className="mt-14 bg-slate-950 rounded-3xl p-8 md:p-10 shadow-xl text-white flex flex-col lg:flex-row items-center justify-between gap-6 border border-slate-800">
+        <div className="mt-14 bg-slate-950 rounded-2xl p-8 md:p-10 shadow-xl text-white flex flex-col lg:flex-row items-center justify-between gap-6 border border-slate-800">
           <div className="space-y-2 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 bg-emerald-900 text-emerald-300 text-xs font-black px-3.5 py-1 rounded-md border border-emerald-700">
               <ShieldCheck size={16} /> 100% Risk Free Investment
