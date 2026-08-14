@@ -6,7 +6,7 @@ import UnitAvailability from '../components/blocks/UnitAvailability';
 import { PROJECTS } from '../data/projectData';
 import { useLanguage } from '../context/LanguageContext';
 import { 
-  MapPin, Building, Calendar, CheckCircle2, ArrowRight, 
+  MapPin, Building2, CheckCircle2, ArrowRight, 
   Sparkles, Maximize, X, ShieldCheck, ArrowLeft, Eye 
 } from 'lucide-react';
 
@@ -19,9 +19,9 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
 
   if (!project) {
     return (
-      <div className="pt-40 pb-24 text-center">
-        <h2 className="text-3xl font-black">{language === 'en' ? 'Project Not Found' : 'প্রজেক্টটি পাওয়া যায়নি'}</h2>
-        <Link to="/projects" className="mt-4 text-emerald-600 font-bold inline-block">
+      <div className="pt-40 pb-24 text-center px-4">
+        <h2 className="text-2xl sm:text-3xl font-black">{language === 'en' ? 'Project Not Found' : 'প্রজেক্টটি পাওয়া যায়নি'}</h2>
+        <Link to="/projects" className="mt-4 text-emerald-700 font-bold inline-block">
           {language === 'en' ? 'Back to Projects' : 'সকল প্রজেক্ট দেখুন'}
         </Link>
       </div>
@@ -38,53 +38,53 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
   return (
     <>
       <SEOHead 
-        title={`${projName} | ${language === 'en' ? 'Akota Properties Uttara' : 'একতা প্রপার্টিজ উত্তরা'}`}
+        title={`${projName} | ${language === 'en' ? 'Akota Properties' : 'একতা প্রপার্টিজ'}`}
         description={`${projTagline}. ${projLocation}.`}
         canonicalUrl={`https://akotaproperties.com/projects/${project.id}`}
         ogImage={project.image}
       />
 
-      <main className="pt-32 md:pt-40 pb-24 bg-slate-50 min-h-screen">
+      <main className="pt-28 sm:pt-36 md:pt-40 pb-20 sm:pb-24 bg-slate-50 min-h-screen">
         {/* Project Hero Header */}
-        <section className="bg-slate-950 text-white py-16 mb-16 relative overflow-hidden">
+        <section className="bg-slate-950 text-white py-12 sm:py-16 mb-10 sm:mb-16 relative overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img src={project.image} alt={projName} className="w-full h-full object-cover brightness-40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/40"></div>
+            <img src={project.image} alt={projName} className="w-full h-full object-cover brightness-[0.35]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/50"></div>
           </div>
 
           <div className="container mx-auto px-4 md:px-6 relative z-10">
-            <Link to="/projects" className="inline-flex items-center gap-2 text-emerald-400 font-bold text-xs mb-6 hover:underline">
+            <Link to="/projects" className="inline-flex items-center gap-2 text-emerald-400 font-bold text-xs mb-4 hover:underline">
               <ArrowLeft size={16} /> {language === 'en' ? 'Back to Projects' : 'সকল প্রজেক্টে ফিরে যান'}
             </Link>
 
             <div className="max-w-4xl space-y-4">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="bg-emerald-600 text-white text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow-lg">
-                  <Sparkles size={14} /> {projStatus}
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="bg-emerald-700 text-white text-[11px] sm:text-xs font-black px-3.5 sm:px-4 py-1.5 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow-md">
+                  <Sparkles size={13} className="shrink-0" /> {projStatus}
                 </span>
-                <span className="bg-white/10 backdrop-blur-md border border-white/20 text-emerald-300 text-xs font-extrabold px-3.5 py-1.5 rounded-full">
+                <span className="bg-white/10 backdrop-blur-md border border-white/20 text-emerald-300 text-[11px] sm:text-xs font-extrabold px-3 py-1.5 rounded-full">
                   {projLand} {language === 'en' ? 'Project' : 'শেয়ার প্রজেক্ট'}
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-black text-white leading-tight">{projName}</h1>
-              <p className="text-emerald-400 font-extrabold text-lg flex items-center gap-2">
-                <MapPin size={20} /> {projLocation}
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-tight break-words">{projName}</h1>
+              <p className="text-emerald-400 font-extrabold text-xs sm:text-base flex items-start gap-1.5 leading-snug">
+                <MapPin size={18} className="shrink-0 mt-0.5" /> {projLocation}
               </p>
-              <p className="text-slate-300 text-base md:text-lg max-w-2xl font-medium leading-relaxed">
+              <p className="text-slate-200 text-sm sm:text-base md:text-lg max-w-2xl font-medium leading-relaxed">
                 {projTagline}
               </p>
 
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-3">
                 <button
                   onClick={() => onOpenBooking(projName)}
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-2xl font-black text-base shadow-xl flex items-center gap-2"
+                  className="w-full sm:w-auto bg-emerald-700 hover:bg-emerald-800 text-white px-7 sm:px-8 py-3.5 rounded-xl font-black text-sm shadow-lg flex items-center justify-center gap-2"
                 >
                   {t('bookNow')} <ArrowRight size={18} />
                 </button>
                 <button
                   onClick={onOpenBrochure}
-                  className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-8 py-4 rounded-2xl font-extrabold text-base"
+                  className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/20 text-white px-7 sm:px-8 py-3.5 rounded-xl font-extrabold text-sm text-center"
                 >
                   {t('btnBrochure')}
                 </button>
@@ -93,42 +93,42 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
           </div>
         </section>
 
-        <div className="container mx-auto px-4 md:px-6 space-y-16">
+        <div className="container mx-auto px-4 md:px-6 space-y-10 sm:space-y-16">
           
           {/* Key Specifications Grid */}
-          <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-slate-200">
-            <h2 className="text-3xl font-black text-slate-900 mb-8 flex items-center gap-3">
-              <Building className="text-emerald-600" size={32} />
-              {language === 'en' ? 'Project Overview & Specifications' : 'প্রজেক্ট স্পেসিফিকেশন ও ওভারভিউ'}
+          <div className="bg-white p-5 sm:p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6 flex items-center gap-2.5">
+              <Building2 className="text-emerald-700 shrink-0" size={28} />
+              <span>{language === 'en' ? 'Project Overview & Specs' : 'প্রজেক্ট স্পেসিফিকেশন ও ওভারভিউ'}</span>
             </h2>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statLocation')}</span>
-                <span className="text-slate-900 font-black text-base mt-1 block">উত্তরা ১৫নং সেক্টর, দিয়াবাড়ি</span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5">
+              <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
+                <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statLocation')}</span>
+                <span className="text-slate-900 font-black text-xs sm:text-sm mt-1 block truncate">{projLocation}</span>
               </div>
-              <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statPrice')}</span>
-                <span className="text-emerald-700 font-black text-lg mt-1 block">৳ {project.priceStart}</span>
+              <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
+                <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statPrice')}</span>
+                <span className="text-emerald-800 font-black text-xs sm:text-base mt-1 block">৳ {project.priceStart}</span>
               </div>
-              <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statFloors')}</span>
-                <span className="text-slate-900 font-black text-base mt-1 block">{project.totalFloors}</span>
+              <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
+                <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statFloors')}</span>
+                <span className="text-slate-900 font-black text-xs sm:text-sm mt-1 block truncate">{project.totalFloors}</span>
               </div>
-              <div className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statHandover')}</span>
-                <span className="text-slate-900 font-black text-base mt-1 block">{projHandover}</span>
+              <div className="bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
+                <span className="text-[10px] sm:text-xs font-bold text-slate-700 uppercase tracking-wider block">{t('statHandover')}</span>
+                <span className="text-slate-900 font-black text-xs sm:text-sm mt-1 block truncate">{projHandover}</span>
               </div>
             </div>
 
             {/* Features List */}
-            <div className="mt-10 pt-8 border-t border-slate-200">
-              <h3 className="text-xl font-black text-slate-900 mb-6">{t('highlightsLabel')}</h3>
-              <div className="grid md:grid-cols-2 gap-4">
+            <div className="mt-8 pt-6 border-t border-slate-200">
+              <h3 className="text-lg font-black text-slate-900 mb-4">{t('highlightsLabel')}</h3>
+              <div className="grid sm:grid-cols-2 gap-3">
                 {project.features.map((feat, idx) => (
-                  <div key={idx} className="flex items-center gap-3 bg-emerald-50/80 p-4 rounded-xl border border-emerald-200 font-bold text-slate-900 text-sm">
-                    <CheckCircle2 size={20} className="text-emerald-600 shrink-0" />
-                    <span>{language === 'en' ? ((project.featuresEn && project.featuresEn[idx]) || feat) : feat}</span>
+                  <div key={idx} className="flex items-start gap-2.5 bg-emerald-50/80 p-3 sm:p-3.5 rounded-xl border border-emerald-200 font-bold text-slate-900 text-xs sm:text-sm">
+                    <CheckCircle2 size={16} className="text-emerald-700 shrink-0 mt-0.5" />
+                    <span className="leading-snug">{language === 'en' ? ((project.featuresEn && project.featuresEn[idx]) || feat) : feat}</span>
                   </div>
                 ))}
               </div>
@@ -136,23 +136,23 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
           </div>
 
           {/* Photo Gallery Grid */}
-          <div className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl border border-slate-200">
-            <h2 className="text-3xl font-black text-slate-900 mb-8 flex items-center gap-3">
-              <Maximize className="text-emerald-600" size={28} />
-              {language === 'en' ? 'Project Gallery & Renders' : 'প্রজেক্ট ফটো ক্যাটালগ'}
+          <div className="bg-white p-5 sm:p-8 md:p-10 rounded-2xl shadow-xl border border-slate-200">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6 flex items-center gap-2.5">
+              <Maximize className="text-emerald-700 shrink-0" size={26} />
+              <span>{language === 'en' ? 'Project Gallery & Renders' : 'প্রজেক্ট ফটো ক্যাটালগ'}</span>
             </h2>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
               {project.gallery.map((imgUrl, idx) => (
                 <div 
                   key={idx}
                   onClick={() => setSelectedImage(imgUrl)}
-                  className="group relative rounded-xl overflow-hidden shadow-md cursor-pointer h-60 bg-slate-900 hover:shadow-xl transition-all"
+                  className="group relative rounded-xl overflow-hidden shadow-sm cursor-pointer h-44 sm:h-56 bg-slate-900 hover:shadow-md transition-all"
                 >
                   <img src={imgUrl} alt={`${projName} ${idx + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="bg-white text-slate-900 px-4 py-2 rounded-full font-black text-xs shadow-lg flex items-center gap-1.5">
-                      <Eye size={14} /> {t('zoomIn')}
+                    <span className="bg-white text-slate-900 px-3 py-1.5 rounded-full font-black text-[11px] shadow-md flex items-center gap-1">
+                      <Eye size={13} /> {t('zoomIn')}
                     </span>
                   </div>
                 </div>
@@ -165,19 +165,19 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
           <UnitAvailability onOpenBooking={onOpenBooking} />
 
           {/* Consultation Banner */}
-          <div className="bg-gradient-to-r from-emerald-950 via-emerald-900 to-teal-950 rounded-2xl p-8 md:p-12 text-white flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl border border-emerald-800/60">
+          <div className="bg-slate-950 rounded-2xl p-6 sm:p-10 text-white flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl border border-slate-800">
             <div className="space-y-2 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 text-xs font-black px-3.5 py-1 rounded-full border border-emerald-400/30">
-                <ShieldCheck size={16} /> 100% Risk Free Investment
+              <div className="inline-flex items-center gap-2 bg-emerald-900 text-emerald-300 text-xs font-black px-3 py-1 rounded-md border border-emerald-700">
+                <ShieldCheck size={15} /> 100% Risk Free Investment
               </div>
-              <h3 className="text-2xl md:text-4xl font-black">{projName} {language === 'en' ? 'Booking Open' : 'বুকিং চলছে'}</h3>
-              <p className="text-emerald-100/90 text-sm font-medium">
+              <h3 className="text-xl sm:text-3xl font-black">{projName} {language === 'en' ? 'Booking Open' : 'বুকিং চলছে'}</h3>
+              <p className="text-slate-300 text-xs sm:text-sm font-medium">
                 {language === 'en' ? 'Contact our corporate office to schedule a site visit.' : 'প্রজেক্ট ভিডিও ও পেপারস দেখতে অফিসে আসুন।'}
               </p>
             </div>
             <button
               onClick={() => onOpenBooking(projName)}
-              className="bg-white text-emerald-950 hover:bg-emerald-50 px-8 py-4 rounded-xl font-black text-base shadow-xl shrink-0 transition-all hover:scale-105"
+              className="w-full sm:w-auto bg-emerald-700 hover:bg-emerald-800 text-white px-8 py-3.5 rounded-xl font-black text-sm shadow-md shrink-0 transition-all text-center"
             >
               {t('btnConsultation')}
             </button>
@@ -187,15 +187,15 @@ export default function ProjectDetailPage({ onOpenBooking, onOpenBrochure }) {
 
         {/* Lightbox Modal */}
         {selectedImage && (
-          <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
-            <div className="relative max-w-4xl w-full bg-white rounded-3xl overflow-hidden p-2 shadow-2xl">
+          <div className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3">
+            <div className="relative max-w-4xl w-full bg-white rounded-2xl overflow-hidden p-2 shadow-2xl">
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 bg-slate-900 text-white p-2.5 rounded-full z-10 hover:bg-emerald-600 transition-colors"
+                className="absolute top-4 right-4 bg-slate-900 text-white p-2 rounded-full z-10 hover:bg-emerald-700 transition-colors"
               >
-                <X size={20} />
+                <X size={18} />
               </button>
-              <img src={selectedImage} alt="Project Gallery Preview" className="w-full h-auto max-h-[85vh] object-contain rounded-2xl" />
+              <img src={selectedImage} alt="Project Gallery Preview" className="w-full h-auto max-h-[80vh] object-contain rounded-xl" />
             </div>
           </div>
         )}
