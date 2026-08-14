@@ -12,7 +12,7 @@ export default function BenefitsPage({ onOpenBooking }) {
         canonicalUrl="https://akotaproperties.com/benefits"
       />
 
-      <main className="pt-28 pb-24 bg-slate-50 min-h-screen">
+      <main className="pt-32 md:pt-40 pb-24 bg-slate-50 min-h-screen">
         {/* Page Banner */}
         <section className="bg-slate-950 text-white py-16 mb-16 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none"></div>
